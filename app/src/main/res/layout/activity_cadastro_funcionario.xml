@@ -61,33 +61,37 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/campoEmail" />
 
-    <Button
-        android:id="@+id/btInserirComprovante"
-        android:layout_width="313dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="8dp"
-        android:background="#8BC34A"
-        android:text="Inserir comprovante em PDF"
-        android:textColor="#000"
-        android:textSize="19sp"
-        app:fontFamily="@font/assistant_semibold"
+    <EditText
+        android:id="@+id/campocpf"
+        app:fontFamily="@font/assistant_extralight"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:ems="10"
+        android:hint="cpf"
+        android:inputType="phone"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/campoCelular" />
+        app:layout_constraintTop_toBottomOf="@+id/campoCelular"/>
 
     <Button
-        android:id="@+id/btCadastrar"
+        android:id="@+id/btCadastrarFuncionario"
         android:layout_width="313dp"
         android:layout_height="50dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="12dp"
         android:background="#4CAF50"
+        android:onClick="cadastrarUsuario"
         android:text="Cadastrar"
         android:textSize="20sp"
         app:fontFamily="@font/assistant_semibold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btInserirComprovante" />
+        app:layout_constraintTop_toBottomOf="@+id/campocpf" />
 
     <Button
         android:id="@+id/btVoltar"
@@ -103,13 +107,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btCadastrar"
+        app:layout_constraintTop_toBottomOf="@+id/btCadastrarFuncionario"
         app:layout_constraintVertical_bias="0.058" />
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="175dp"
-        android:layout_height="161dp"
+        android:layout_width="123dp"
+        android:layout_height="114dp"
         android:layout_marginTop="28dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

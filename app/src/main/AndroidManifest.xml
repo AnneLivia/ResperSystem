@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CadastroFuncionario"></activity>
+        <activity android:name=".LoginFuncionario"></activity>
+        <activity android:name=".CadastroFuncionario" />
         <activity android:name=".AreaFuncionario" />
         <activity android:name=".MainActivity">
             <intent-filter>

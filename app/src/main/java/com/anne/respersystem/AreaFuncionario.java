@@ -19,7 +19,13 @@ public class AreaFuncionario extends AppCompatActivity {
         btCadastrar = (Button) findViewById(R.id.btCadastrar);
         btVoltar = (Button) findViewById(R.id.btVoltar);
 
-
+        btEntrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent activityCadastroFuncionario = new Intent(AreaFuncionario.this, LoginFuncionario.class);
+                AreaFuncionario.this.startActivity(activityCadastroFuncionario);
+            }
+        });
         btCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
