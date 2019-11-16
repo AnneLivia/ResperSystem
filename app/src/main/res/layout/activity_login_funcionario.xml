@@ -8,6 +8,25 @@
     tools:context=".LoginFuncionario">
 
     <EditText
+        android:id="@+id/campoEmailEntrar"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:ems="10"
+        android:hint="Insira seu email"
+        android:inputType="textEmailAddress"
+        android:textSize="20sp"
+        app:fontFamily="@font/assistant_extralight"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+    <EditText
         android:id="@+id/campocpfentrar"
         android:layout_width="0dp"
         android:layout_height="50dp"
@@ -24,7 +43,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        app:layout_constraintTop_toBottomOf="@+id/campoEmailEntrar" />
 
     <Button
         android:id="@+id/btEntrarConta"
@@ -33,6 +52,7 @@
         android:layout_marginTop="36dp"
         android:background="#4CAF50"
         android:text="Entrar"
+        android:onClick="loginFuncionario"
         android:textSize="20sp"
         app:fontFamily="@font/assistant_semibold"
         app:layout_constraintEnd_toEndOf="parent"

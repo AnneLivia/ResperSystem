@@ -97,6 +97,8 @@ public class CadastroFuncionario extends AppCompatActivity {
                             ref.child("email").setValue(email.getText().toString());
                             ref.child("cpf").setValue(cpf.getText().toString());
                             ref.child("celular").setValue(celular.getText().toString());
+                            FirebaseAuth.getInstance().signOut();
+                            finish();
                         }
                     }
                 });
