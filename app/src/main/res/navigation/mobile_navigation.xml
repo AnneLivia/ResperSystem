@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.anne.respersystem.ui.home.HomeFragment"
+        android:label="Tela Inicial"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_gallery"
+        android:name="com.anne.respersystem.ui.gallery.GalleryFragment"
+        android:label="Salas Livres"
+        tools:layout="@layout/fragment_gallery" />
+
+    <fragment
+        android:id="@+id/nav_slideshow"
+        android:name="com.anne.respersystem.ui.slideshow.SlideshowFragment"
+        android:label="Reservar Sala"
+        tools:layout="@layout/fragment_slideshow" />
+
+    <fragment
+        android:id="@+id/nav_tools"
+        android:name="com.anne.respersystem.ui.tools.ToolsFragment"
+        android:label="Calendário"
+        tools:layout="@layout/fragment_tools" />
+
+    <fragment
+        android:id="@+id/nav_share"
+        android:name="com.anne.respersystem.ui.share.ShareFragment"
+        android:label="Suporte"
+        tools:layout="@layout/fragment_share" />
+
+    <fragment
+        android:id="@+id/nav_send"
+        android:name="com.anne.respersystem.ui.send.SendFragment"
+        android:label="Sobre"
+        tools:layout="@layout/fragment_send" />
+</navigation>

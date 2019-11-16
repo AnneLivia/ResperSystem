@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/tela_inicial"
+            android:title="Tela Inicial" />
+        <item
+            android:id="@+id/nav_gallery"
+            android:icon="@drawable/verificar_sala"
+            android:title="Salas Livres" />
+        <item
+            android:id="@+id/nav_slideshow"
+            android:icon="@drawable/reserva_sala"
+            android:title="Reservar Sala" />
+        <item
+            android:id="@+id/nav_tools"
+            android:icon="@drawable/calendario"
+            android:title="Calendário" />
+    </group>
+
+    <item android:title=" ">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Suporte" />
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/sobre"
+                android:title="Sobre" />
+        </menu>
+    </item>
+
+</menu>

@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -97,6 +98,7 @@ public class CadastroFuncionario extends AppCompatActivity {
                             ref.child("email").setValue(email.getText().toString());
                             ref.child("cpf").setValue(cpf.getText().toString());
                             ref.child("celular").setValue(celular.getText().toString());
+                            Toast.makeText(CadastroFuncionario.this, "Cadastrado com successo!", Toast.LENGTH_SHORT).show();
                             FirebaseAuth.getInstance().signOut();
                             finish();
                         }

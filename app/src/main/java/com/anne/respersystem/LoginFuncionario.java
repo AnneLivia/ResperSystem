@@ -47,7 +47,7 @@ public class LoginFuncionario extends AppCompatActivity {
                 if(user != null) {
                     // se possuir usuario passa para a proxima activity
                     Log.d("MeuLog", "Usuario conectado: " + user.getUid(), null);
-                    Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                    Intent i = new Intent(getApplicationContext(), FuncionarioConectado.class);
                     startActivity(i);
                 } else {
                     Log.d("Meulog", "Usuario não conectado", null);
@@ -79,17 +79,22 @@ public class LoginFuncionario extends AppCompatActivity {
     }
 
     public void loginFuncionario(View v) {
-        MinhaAuth.signInWithEmailAndPassword(email.getText().toString(),
-                cpf.getText().toString()).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(!task.isSuccessful()) {
-                    // se nao foi um sucesso
-                    Log.d("MeuLog", "Login nao realizado");
-                } else {
-                    Toast.makeText(LoginFuncionario.this, "Bem vindo!", Toast.LENGTH_SHORT).show();
+        if (!email.getText().toString().equals("") && !cpf.getText().toString().equals("")) {
+            MinhaAuth.signInWithEmailAndPassword(email.getText().toString(),
+                    cpf.getText().toString()).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if (!task.isSuccessful()) {
+                        // se nao foi um sucesso
+                        Log.d("MeuLog", "Login nao realizado");
+                        Toast.makeText(LoginFuncionario.this, "Login Invalido!", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(LoginFuncionario.this, "Bem vindo (a)!", Toast.LENGTH_SHORT).show();
+                    }
                 }
-            }
-        });
+            });
+        } else {
+            Toast.makeText(LoginFuncionario.this, "Preencher campos para o login", Toast.LENGTH_SHORT).show();
+        }
     }
 }
