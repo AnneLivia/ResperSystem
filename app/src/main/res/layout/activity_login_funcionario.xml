@@ -21,6 +21,7 @@
         android:inputType="textEmailAddress"
         android:textSize="20sp"
         app:fontFamily="@font/assistant_extralight"
+        android:backgroundTint="#00D307"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,6 +30,7 @@
     <EditText
         android:id="@+id/campocpfentrar"
         android:layout_width="0dp"
+        android:backgroundTint="#00D307"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
@@ -52,6 +54,7 @@
         android:layout_marginTop="36dp"
         android:background="#4CAF50"
         android:text="Entrar"
+        android:textColor="#fff"
         android:onClick="loginFuncionario"
         android:textSize="20sp"
         app:fontFamily="@font/assistant_semibold"
@@ -67,6 +70,7 @@
         android:layout_marginBottom="44dp"
         android:background="#8BC34A"
         android:text="Voltar"
+        android:textColor="#fff"
         android:textSize="20sp"
         app:fontFamily="@font/assistant_semibold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -78,12 +82,13 @@
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="370dp"
-        android:layout_height="271dp"
+        android:layout_width="315dp"
+        android:layout_height="192dp"
         android:layout_marginTop="28dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/worker" />
+        app:srcCompat="@drawable/login"
+        tools:srcCompat="@drawable/login" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -24,6 +24,17 @@ public class MainActivity extends AppCompatActivity {
                 Intent activityAreaFuncionario = new Intent(MainActivity.this, AreaFuncionario.class);
                 MainActivity.this.startActivity(activityAreaFuncionario);
                 finish();
+                MainActivity.this.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            }
+        });
+
+        btDiscente.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent activityAreaDiscente = new Intent(MainActivity.this, AreaDiscente.class);
+                MainActivity.this.startActivity(activityAreaDiscente);
+                finish();
+                MainActivity.this.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
 

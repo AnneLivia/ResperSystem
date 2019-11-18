@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="@dimen/nav_header_height"
-    android:background="#3CA541"
+    android:background="#4CAF50"
     android:gravity="bottom"
     android:orientation="vertical"
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -15,19 +15,20 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="69dp"
-        android:layout_height="73dp"
+        android:layout_width="74dp"
+        android:layout_height="79dp"
         android:contentDescription="@string/nav_header_desc"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        app:srcCompat="@drawable/userworker"
-        tools:srcCompat="@drawable/userworker" />
+        app:srcCompat="@drawable/reading"
+        tools:ignore="VectorDrawableCompat"
+        tools:srcCompat="@drawable/reading" />
 
     <TextView
-        android:id="@+id/funcionario_nome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/arsenal"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:text="Funcionario"
+        android:text="Discente"
         android:textColor="#fff"
         android:textSize="16sp"
         android:textStyle="bold" />

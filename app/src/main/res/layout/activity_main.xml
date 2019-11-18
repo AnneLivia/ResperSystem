@@ -15,6 +15,7 @@
         android:background="#4CAF50"
         android:text="Funcionário"
         android:textSize="20sp"
+        android:textColor="#fff"
         android:textStyle="bold"
         app:fontFamily="@font/assistant_semibold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,6 +26,7 @@
     <Button
         android:id="@+id/btDiscente"
         android:layout_width="220dp"
+        android:textColor="#fff"
         android:layout_height="74dp"
         android:layout_marginTop="16dp"
         android:background="#4CAF50"

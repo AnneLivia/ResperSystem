@@ -1,26 +1,16 @@
 package com.anne.respersystem;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.anne.respersystem.ui.salasDisponiveis.SalasDisponiveisFragment;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.sql.Date;
 
 public class InserirSala extends AppCompatActivity {
 
@@ -48,6 +38,7 @@ public class InserirSala extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
+                InserirSala.this.overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
             }
         });
 
@@ -84,6 +75,7 @@ public class InserirSala extends AppCompatActivity {
                 ref.child("defeito").setValue("false");
                 Toast.makeText(InserirSala.this, "Sala Inserida com Sucesso!", Toast.LENGTH_SHORT).show();
                 finish();
+                InserirSala.this.overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }
 

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view_discente">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home_discentes"
+            android:icon="@drawable/tela_inicial"
+            android:title="Tela Inicial" />
+        <item
+            android:id="@+id/nav_salas_discentes"
+            android:icon="@drawable/verificar_sala"
+            android:title="Salas Reservadas" />
+        <item
+            android:id="@+id/nav_calendario_discentes"
+            android:icon="@drawable/calendario"
+            android:title="Calendário" />
+    </group>
+
+    <item android:title=" ">
+        <menu>
+            <item
+                android:id="@+id/nav_suporte_discentes"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Suporte" />
+            <item
+                android:id="@+id/nav_send_discente"
+                android:icon="@drawable/sobre"
+                android:title="Sobre" />
+        </menu>
+    </item>
+
+</menu>

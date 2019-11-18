@@ -94,6 +94,7 @@ public class FuncionarioConectado extends AppCompatActivity {
         if(id == R.id.logout) {
             FirebaseAuth.getInstance().signOut();
             finish();
+            FuncionarioConectado.this.overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
         }
 
         return super.onOptionsItemSelected(item);

@@ -49,6 +49,7 @@ public class LoginFuncionario extends AppCompatActivity {
                     Log.d("MeuLog", "Usuario conectado: " + user.getUid(), null);
                     Intent i = new Intent(getApplicationContext(), FuncionarioConectado.class);
                     startActivity(i);
+                    LoginFuncionario.this.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 } else {
                     Log.d("Meulog", "Usuario não conectado", null);
                 }
@@ -61,7 +62,8 @@ public class LoginFuncionario extends AppCompatActivity {
             public void onClick(View view) {
                 Intent activityVoltarMain = new Intent(LoginFuncionario.this, AreaFuncionario.class);
                 LoginFuncionario.this.startActivity(activityVoltarMain);
-                //finish();
+                finish();
+                LoginFuncionario.this.overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
             }
         });
     }

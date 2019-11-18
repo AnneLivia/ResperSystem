@@ -1,4 +1,4 @@
-package com.anne.respersystem.ui.slideshow;
+package com.anne.respersystem.ui.ReservarSalas;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,17 +15,17 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.anne.respersystem.R;
 
-public class SlideshowFragment extends Fragment {
+public class ReservarSalasFragment extends Fragment {
 
-    private SlideshowViewModel slideshowViewModel;
+    private ReservarSalasViewModel reservarSalasViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        slideshowViewModel =
-                ViewModelProviders.of(this).get(SlideshowViewModel.class);
+        reservarSalasViewModel =
+                ViewModelProviders.of(this).get(ReservarSalasViewModel.class);
         View root = inflater.inflate(R.layout.fragment_slideshow, container, false);
         final TextView textView = root.findViewById(R.id.text_slideshow);
-        slideshowViewModel.getText().observe(this, new Observer<String>() {
+        reservarSalasViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

@@ -7,9 +7,10 @@
     tools:context=".CadastroFuncionario">
 
     <EditText
-        android:id="@+id/campoNomeSala"
+        android:id="@+id/campoNomeFuncionario"
         android:layout_width="0dp"
         android:layout_height="50dp"
+        android:backgroundTint="#00D307"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="8dp"
@@ -26,9 +27,10 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <EditText
-        android:id="@+id/campoLocal"
+        android:id="@+id/campoEmailFuncionario"
         app:fontFamily="@font/assistant_extralight"
         android:layout_width="0dp"
+        android:backgroundTint="#00D307"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
@@ -41,12 +43,13 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/campoNomeSala" />
+        app:layout_constraintTop_toBottomOf="@+id/campoNomeFuncionario" />
 
     <EditText
-        android:id="@+id/campoCapacidade"
+        android:id="@+id/campoCelularFuncionario"
         app:fontFamily="@font/assistant_extralight"
         android:layout_width="0dp"
+        android:backgroundTint="#00D307"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
@@ -59,12 +62,13 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/campoLocal" />
+        app:layout_constraintTop_toBottomOf="@+id/campoEmailFuncionario" />
 
     <EditText
-        android:id="@+id/campocpf"
+        android:id="@+id/campoCPFfuncionario"
         app:fontFamily="@font/assistant_extralight"
         android:layout_width="0dp"
+        android:backgroundTint="#00D307"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
@@ -77,21 +81,22 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/campoCapacidade"/>
+        app:layout_constraintTop_toBottomOf="@+id/campoCelularFuncionario"/>
 
     <Button
-        android:id="@+id/btSalvarSala"
+        android:id="@+id/btCadastrarFuncionario"
         android:layout_width="313dp"
         android:layout_height="50dp"
         android:layout_marginTop="12dp"
         android:background="#4CAF50"
         android:onClick="cadastrarUsuario"
         android:text="Cadastrar"
+        android:textColor="#fff"
         android:textSize="20sp"
         app:fontFamily="@font/assistant_semibold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/campocpf" />
+        app:layout_constraintTop_toBottomOf="@+id/campoCPFfuncionario" />
 
     <Button
         android:id="@+id/btVoltar"
@@ -99,21 +104,22 @@
         android:layout_height="50dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="44dp"
-        android:background="#4CAF50"
+        android:background="#8BC34A"
         android:text="Voltar"
+        android:textColor="#fff"
         android:textSize="20sp"
         app:fontFamily="@font/assistant_semibold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btSalvarSala"
+        app:layout_constraintTop_toBottomOf="@+id/btCadastrarFuncionario"
         app:layout_constraintVertical_bias="0.058" />
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="123dp"
-        android:layout_height="114dp"
+        android:layout_width="163dp"
+        android:layout_height="159dp"
         android:layout_marginTop="28dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

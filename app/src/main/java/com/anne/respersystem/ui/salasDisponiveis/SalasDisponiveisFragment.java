@@ -4,8 +4,8 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,25 +14,21 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.anne.respersystem.FuncionarioConectado;
 import com.anne.respersystem.InserirSala;
 import com.anne.respersystem.R;
-import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class SalasDisponiveisFragment extends Fragment {
@@ -72,6 +68,8 @@ public class SalasDisponiveisFragment extends Fragment {
             public void onClick(View view) {
                 Intent activityInserir = new Intent(getActivity(), InserirSala.class);
                 startActivity(activityInserir);
+                // animacao ao mudar de acitivty
+                getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
 
@@ -112,6 +110,10 @@ public class SalasDisponiveisFragment extends Fragment {
 
                 text1.setTextSize(20);
                 text2.setTextSize(18);
+
+                // Mudando fontfamily dos texts
+                text1.setTypeface(ResourcesCompat.getFont(getContext(),R.font.arsenal));
+                text2.setTypeface(ResourcesCompat.getFont(getContext(), R.font.assistant));
 
                 // se estiver com defeito mudar da textview
                 if(defeito.get(position).equals("true")) {
@@ -174,7 +176,9 @@ public class SalasDisponiveisFragment extends Fragment {
                             }
                         };
 
-                        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getContext(), R.style.DialogThemeOne);
+
+
                         builder.setMessage("A sala está com defeitos ou passando por reformas?")
                                 .setPositiveButton("Sim", dialogClickListener)
                                 .setNegativeButton("Não", dialogClickListener).show();
@@ -191,7 +195,7 @@ public class SalasDisponiveisFragment extends Fragment {
                                     case DialogInterface.BUTTON_POSITIVE:
                                         // coloca para sim
                                         try {
-                                            String defeito = ref.child("salas").child(ids.get(position)).child("defeito").toString();
+                                            // String defeito = ref.child("salas").child(ids.get(position)).child("defeito").toString();
                                             ref.child("salas").child(ids.get(position)).removeValue();
                                             // ja que o dado nao carrega ao mesmo tempo que o firebase e atualizado, remover do firebase logo
                                             adapter.remove(adapter.getItem(position));
@@ -208,10 +212,11 @@ public class SalasDisponiveisFragment extends Fragment {
                             }
                         };
 
-                        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getContext(), R.style.DialogThemeTwo);
                         builder.setMessage("Deseja remover a sala do sistema?")
                                 .setPositiveButton("Sim", dialogClickListener)
                                 .setNegativeButton("Não", dialogClickListener).show();
+
                         return true;
                     }
                 });

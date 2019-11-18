@@ -1,16 +1,16 @@
-package com.anne.respersystem.ui.tools;
+package com.anne.respersystem.ui.share;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class ToolsViewModel extends ViewModel {
+public class ShareViewModel_discente extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public ToolsViewModel() {
+    public ShareViewModel_discente() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is tools fragment");
+        mText.setValue("");
     }
 
     public LiveData<String> getText() {

@@ -3,6 +3,7 @@
     <array name="preloaded_fonts" translatable="false">
         <item>@font/alef</item>
         <item>@font/antic_slab</item>
+        <item>@font/arsenal</item>
         <item>@font/assistant</item>
         <item>@font/assistant_extralight</item>
         <item>@font/assistant_semibold</item>

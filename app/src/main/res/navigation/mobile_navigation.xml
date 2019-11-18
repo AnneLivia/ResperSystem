@@ -19,13 +19,13 @@
 
     <fragment
         android:id="@+id/nav_slideshow"
-        android:name="com.anne.respersystem.ui.slideshow.SlideshowFragment"
+        android:name="com.anne.respersystem.ui.ReservarSalas.ReservarSalasFragment"
         android:label="Reservar Sala"
         tools:layout="@layout/fragment_slideshow" />
 
     <fragment
         android:id="@+id/nav_tools"
-        android:name="com.anne.respersystem.ui.tools.ToolsFragment"
+        android:name="com.anne.respersystem.ui.Calendar.CalendarFragment"
         android:label="Calendário"
         tools:layout="@layout/fragment_tools" />
 

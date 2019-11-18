@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation_discente"
+    app:startDestination="@+id/nav_home_discentes">
+
+    <fragment
+        android:id="@+id/nav_home_discentes"
+        android:name="com.anne.respersystem.ui.home.HomeFragment_discente"
+        android:label="Tela Inicial"
+        tools:layout="@layout/fragment_home_discente" />
+
+    <fragment
+        android:id="@+id/nav_salas_discentes"
+        android:name="com.anne.respersystem.ui.ReservarSalas.SalasReservadasFragment_discente"
+        android:label="Salas Reservadas"
+        tools:layout="@layout/fragment_salasreservadas_discente" />
+
+    <fragment
+        android:id="@+id/nav_calendario_discentes"
+        android:name="com.anne.respersystem.ui.Calendar.CalendarFragment_discente"
+        android:label="Calendário"
+        tools:layout="@layout/fragment_tools_discente" />
+
+    <fragment
+        android:id="@+id/nav_suporte_discentes"
+        android:name="com.anne.respersystem.ui.share.ShareFragment_discente"
+        android:label="Suporte"
+        tools:layout="@layout/fragment_share_discente" />
+
+    <fragment
+        android:id="@+id/nav_send_discente"
+        android:name="com.anne.respersystem.ui.send.SendFragment_discente"
+        android:label="Sobre"
+        tools:layout="@layout/fragment_send_discente" />
+</navigation>
