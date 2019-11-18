@@ -9,9 +9,9 @@
             android:icon="@drawable/tela_inicial"
             android:title="Tela Inicial" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_salasdisponiveis"
             android:icon="@drawable/verificar_sala"
-            android:title="Salas Livres" />
+            android:title="Salas Disponíveis" />
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/reserva_sala"

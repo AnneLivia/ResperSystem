@@ -9,14 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LoginFuncionario"></activity>
+        <activity android:name=".InserirSala"></activity>
+        <activity android:name=".LoginFuncionario" />
         <activity android:name=".CadastroFuncionario" />
         <activity android:name=".AreaFuncionario" />
         <activity
-            android:name="FuncionarioConectado"
+            android:name=".FuncionarioConectado"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

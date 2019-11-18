@@ -1,15 +1,16 @@
-package com.anne.respersystem.ui.gallery;
+package com.anne.respersystem.ui.salasDisponiveis;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class GalleryViewModel extends ViewModel {
+public class SalasDisponiveisViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public GalleryViewModel() {
+    public SalasDisponiveisViewModel() {
         mText = new MutableLiveData<>();
+
     }
 
     public LiveData<String> getText() {

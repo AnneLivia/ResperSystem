@@ -34,10 +34,10 @@ public class CadastroFuncionario extends AppCompatActivity {
         // btCadastrar = (Button) findViewById(R.id.btCadastrarFuncionario);
         btVoltar = (Button) findViewById(R.id.btVoltar);
 
-        email = (EditText) findViewById(R.id.campoEmail);
-        nomeCompleto = (EditText) findViewById(R.id.campoNomeCompleto);
+        email = (EditText) findViewById(R.id.campoLocal);
+        nomeCompleto = (EditText) findViewById(R.id.campoNomeSala);
         cpf = (EditText) findViewById(R.id.campocpf);
-        celular = (EditText) findViewById(R.id.campoCelular);
+        celular = (EditText) findViewById(R.id.campoCapacidade);
 
         btVoltar.setOnClickListener(new View.OnClickListener() {
             @Override

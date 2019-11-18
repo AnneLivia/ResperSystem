@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CadastroFuncionario">
+    tools:context=".InserirSala">
 
     <EditText
         android:id="@+id/campoNomeSala"
@@ -12,22 +12,20 @@
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:ems="10"
-        android:hint="Nome Completo"
-        android:inputType="textPersonName"
+        android:hint="Nome da Sala"
         android:textSize="20sp"
         app:fontFamily="@font/assistant_extralight"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        app:layout_constraintTop_toBottomOf="@+id/tvIncluirSala" />
 
     <EditText
         android:id="@+id/campoLocal"
-        app:fontFamily="@font/assistant_extralight"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
@@ -36,16 +34,15 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:ems="10"
-        android:hint="Email"
-        android:inputType="textEmailAddress"
+        android:hint="Local da sala"
         android:textSize="20sp"
+        app:fontFamily="@font/assistant_extralight"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/campoNomeSala" />
 
     <EditText
         android:id="@+id/campoCapacidade"
-        app:fontFamily="@font/assistant_extralight"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
@@ -54,50 +51,40 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:ems="10"
-        android:hint="Celular"
+        android:hint="Capacidade"
         android:inputType="phone"
         android:textSize="20sp"
+        app:fontFamily="@font/assistant_extralight"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/campoLocal" />
-
-    <EditText
-        android:id="@+id/campocpf"
-        app:fontFamily="@font/assistant_extralight"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:ems="10"
-        android:hint="CPF"
-        android:inputType="phone"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/campoCapacidade"/>
 
     <Button
         android:id="@+id/btSalvarSala"
         android:layout_width="313dp"
         android:layout_height="50dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:background="#4CAF50"
-        android:onClick="cadastrarUsuario"
-        android:text="Cadastrar"
+        android:text="Salvar Sala"
         android:textSize="20sp"
         app:fontFamily="@font/assistant_semibold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/campocpf" />
+        app:layout_constraintTop_toBottomOf="@+id/campoCapacidade" />
 
     <Button
         android:id="@+id/btVoltar"
         android:layout_width="313dp"
         android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:layout_marginBottom="44dp"
         android:background="#4CAF50"
         android:text="Voltar"
@@ -110,14 +97,17 @@
         app:layout_constraintTop_toBottomOf="@+id/btSalvarSala"
         app:layout_constraintVertical_bias="0.058" />
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="123dp"
-        android:layout_height="114dp"
-        android:layout_marginTop="28dp"
+    <TextView
+        android:id="@+id/tvIncluirSala"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="sans-serif"
+        android:text="INSERIR SALA"
+        android:textColor="#000"
+        android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/signup" />
-
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
