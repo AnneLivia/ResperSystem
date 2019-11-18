@@ -146,7 +146,7 @@ public class SalasDisponiveisFragment extends Fragment {
 
                 listaDeSalas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
-                    public void onItemClick(AdapterView<?> adapterView, final View view, final int position, long l) {
+                    public void onItemClick(final AdapterView<?> adapterView, final View view, final int position, long l) {
                         DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -180,13 +180,47 @@ public class SalasDisponiveisFragment extends Fragment {
                                 .setNegativeButton("Não", dialogClickListener).show();
                     }
                 });
+
+                listaDeSalas.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                    @Override
+                    public boolean onItemLongClick(AdapterView<?> adapterView, final View view, final int position, long l) {
+                        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                switch (which){
+                                    case DialogInterface.BUTTON_POSITIVE:
+                                        // coloca para sim
+                                        try {
+                                            String defeito = ref.child("salas").child(ids.get(position)).child("defeito").toString();
+                                            ref.child("salas").child(ids.get(position)).removeValue();
+                                            // ja que o dado nao carrega ao mesmo tempo que o firebase e atualizado, remover do firebase logo
+                                            adapter.remove(adapter.getItem(position));
+                                            getActivity().finish();
+                                            //getActivity().finish();
+                                        } catch (Exception e) {
+                                            e.printStackTrace();
+                                        }
+                                        break;
+                                    case DialogInterface.BUTTON_NEGATIVE:
+                                        // nao faca nada
+                                        break;
+                                }
+                            }
+                        };
+
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                        builder.setMessage("Deseja remover a sala do sistema?")
+                                .setPositiveButton("Sim", dialogClickListener)
+                                .setNegativeButton("Não", dialogClickListener).show();
+                        return true;
+                    }
+                });
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
             }
         });
-
     }
 
 }
