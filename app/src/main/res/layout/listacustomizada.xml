@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/texto1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="left|center_vertical"
+        android:layout_marginTop="5dp"
+        android:textColor="#000000"
+        android:checkMark="?android:attr/textCheckMark" />
+
+    <TextView
+        android:id="@+id/texto2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="15dp"
+        android:gravity="left|center_vertical"
+        android:textColor="#000000"
+        />
+
+    <TextView
+        android:id="@+id/texto3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="15dp"
+        android:gravity="left|center_vertical"
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/texto4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="15dp"
+        android:gravity="left|center_vertical"
+        android:textColor="#000000"
+         />
+    <TextView
+        android:id="@+id/texto5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="15dp"
+        android:gravity="left|center_vertical"
+        android:textColor="#000000"
+         />
+    <TextView
+        android:id="@+id/texto6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="15dp"
+        android:gravity="left|center_vertical"
+        android:textColor="#000000"
+        />
+
+
+</LinearLayout>

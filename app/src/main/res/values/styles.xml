@@ -13,6 +13,10 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="DialogCalendarTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@android:color/holo_green_dark</item>
+    </style>
+
     <style name="DialogThemeExtra" parent="Theme.AppCompat.Dialog.Alert">
         <item name="android:background">@color/colorextra</item>
         <item name="colorAccent">@android:color/white</item>

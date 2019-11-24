@@ -13,6 +13,7 @@
         <activity android:name=".LoginFuncionario" />
         <activity android:name=".CadastroFuncionario" />
         <activity android:name=".AreaFuncionario" />
+        <activity android:name=".ReservarSala" />
         <activity
             android:name=".AreaDiscente"
             android:label="@string/app_name"

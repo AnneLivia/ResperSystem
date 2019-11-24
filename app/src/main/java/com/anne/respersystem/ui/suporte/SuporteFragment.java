@@ -1,5 +1,7 @@
 package com.anne.respersystem.ui.suporte;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -107,9 +109,6 @@ public class SuporteFragment extends Fragment {
                                                         // quando email é atualizado, o antigo email fica reservado pelo firebase, caso o dono do email queira usa-lo
                                                         // novamente ao clicar no link de revogação de mudança de email enviado para o antigo email. isso permite que o dono
                                                         // recupere sua conta em caso de hackers, etc.
-                                                        Intent i = new Intent(getActivity(), LoginFuncionario.class);
-                                                        getActivity().startActivity(i);
-                                                        getActivity().finish();
                                                     }
                                                 }
                                             });
@@ -124,39 +123,58 @@ public class SuporteFragment extends Fragment {
         btRemoverCadastro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                // obtendo credenciais para fazer a re autenticacao
-                AuthCredential credential = EmailAuthProvider
-                        .getCredential(user.getEmail(), cpfuser);
-
-                user.reauthenticate(credential)
-                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                if (task.isSuccessful()) {
-                                    // se ele estiver logado, remover sua conta
-                                    user.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<Void> task) {
-                                            if (task.isSuccessful()) {
-                                                // remover current user from bd
-                                                ref.child("usuarios").child(user.getUid()).removeValue();
-                                                // exibir na tela
-                                                Toast.makeText(getContext(), "Conta removida com sucesso!", Toast.LENGTH_SHORT).show();
-                                                Intent i = new Intent(getActivity(), MainActivity.class);
-                                                getActivity().startActivity(i);
-                                                getActivity().finish();
-                                            } else {
-                                                Log.e("TAG", "User account deletion unsucessful.");
-                                            }
-                                        }
-                                    });
-                                } else {
-                                    Toast.makeText(getContext(), "Falha na autenticação!",
-                                            Toast.LENGTH_SHORT).show();
+                DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        switch (which) {
+                            case DialogInterface.BUTTON_POSITIVE:
+                                // coloca para sim
+                                try {
+                                    // obtendo credenciais para fazer a re autenticacao
+                                    AuthCredential credential = EmailAuthProvider
+                                            .getCredential(user.getEmail(), cpfuser);
+                                    user.reauthenticate(credential)
+                                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task) {
+                                                    if (task.isSuccessful()) {
+                                                        // se ele estiver logado, remover sua conta
+                                                        user.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                            @Override
+                                                            public void onComplete(@NonNull Task<Void> task) {
+                                                                if (task.isSuccessful()) {
+                                                                    // remover current user from bd
+                                                                    ref.child("usuarios").child(user.getUid()).removeValue();
+                                                                    // exibir na tela
+                                                                    Toast.makeText(getContext(), "Conta removida com sucesso!", Toast.LENGTH_SHORT).show();
+                                                                    Intent i = new Intent(getActivity(), MainActivity.class);
+                                                                    getActivity().startActivity(i);
+                                                                    getActivity().finish();
+                                                                } else {
+                                                                    Log.e("TAG", "User account deletion unsucessful.");
+                                                                }
+                                                            }
+                                                        });
+                                                    } else {
+                                                        Toast.makeText(getContext(), "Falha na autenticação!",
+                                                                Toast.LENGTH_SHORT).show();
+                                                    }
+                                                }
+                                            });
+                                } catch (Exception e) {
+                                    e.printStackTrace();
                                 }
-                            }
-                        });
+                                break;
+                            case DialogInterface.BUTTON_NEGATIVE:
+                                // nao faca nada
+                                break;
+                        }
+                    }
+                };
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext(), R.style.DialogThemeTwo);
+                builder.setMessage("Deseja remover sua conta?")
+                        .setPositiveButton("Sim", dialogClickListener)
+                        .setNegativeButton("Não", dialogClickListener).show();
             }
         });
 

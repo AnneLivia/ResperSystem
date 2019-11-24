@@ -10,7 +10,7 @@ public class ReservarSalasViewModel extends ViewModel {
 
     public ReservarSalasViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is ReservarSalas fragment");
+
     }
 
     public LiveData<String> getText() {

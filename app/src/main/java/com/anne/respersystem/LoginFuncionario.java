@@ -106,6 +106,8 @@ public class LoginFuncionario extends AppCompatActivity {
                                     if(!achou) {
                                         Toast.makeText(LoginFuncionario.this,"CPF não cadastrado no sistema", Toast.LENGTH_LONG).show();
                                     }
+                                    // para buscar outro usuario novamente
+                                    achou = false;
                                 }
 
                                 @Override
