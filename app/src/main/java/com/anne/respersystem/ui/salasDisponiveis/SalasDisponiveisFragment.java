@@ -1,10 +1,9 @@
-package com.anne.respersystem.ui.salasDisponiveis;
+package com.anne.respersystem.ui.salasdisponiveis;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,7 +19,6 @@ import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.anne.respersystem.FuncionarioConectado;
 import com.anne.respersystem.InserirSala;
 import com.anne.respersystem.R;
 import com.google.firebase.database.DataSnapshot;
@@ -199,7 +197,9 @@ public class SalasDisponiveisFragment extends Fragment {
                                             ref.child("salas").child(ids.get(position)).removeValue();
                                             // ja que o dado nao carrega ao mesmo tempo que o firebase e atualizado, remover do firebase logo
                                             adapter.remove(adapter.getItem(position));
+                                            Intent intent = getActivity().getIntent();
                                             getActivity().finish();
+                                            startActivity(intent);
                                             //getActivity().finish();
                                         } catch (Exception e) {
                                             e.printStackTrace();

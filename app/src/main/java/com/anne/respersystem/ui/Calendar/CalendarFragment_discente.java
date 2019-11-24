@@ -1,4 +1,4 @@
-package com.anne.respersystem.ui.Calendar;
+package com.anne.respersystem.ui.calendar;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

@@ -1,4 +1,4 @@
-package com.anne.respersystem.ui.ReservarSalas;
+package com.anne.respersystem.ui.reservarsalas;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

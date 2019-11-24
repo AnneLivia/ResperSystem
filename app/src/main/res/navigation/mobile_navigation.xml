@@ -13,27 +13,27 @@
 
     <fragment
         android:id="@+id/nav_salasdisponiveis"
-        android:name="com.anne.respersystem.ui.salasDisponiveis.SalasDisponiveisFragment"
+        android:name="com.anne.respersystem.ui.salasdisponiveis.SalasDisponiveisFragment"
         android:label="Salas Disponíveis"
         tools:layout="@layout/fragment_salasdisponiveis" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.anne.respersystem.ui.ReservarSalas.ReservarSalasFragment"
+        android:id="@+id/nav_reservarsalas"
+        android:name="com.anne.respersystem.ui.reservarsalas.ReservarSalasFragment"
         android:label="Reservar Sala"
         tools:layout="@layout/fragment_slideshow" />
 
     <fragment
         android:id="@+id/nav_tools"
-        android:name="com.anne.respersystem.ui.Calendar.CalendarFragment"
+        android:name="com.anne.respersystem.ui.calendar.CalendarFragment"
         android:label="Calendário"
         tools:layout="@layout/fragment_tools" />
 
     <fragment
-        android:id="@+id/nav_share"
-        android:name="com.anne.respersystem.ui.share.ShareFragment"
+        android:id="@+id/nav_suporte"
+        android:name="com.anne.respersystem.ui.suporte.SuporteFragment"
         android:label="Suporte"
-        tools:layout="@layout/fragment_share" />
+        tools:layout="@layout/fragment_suporte" />
 
     <fragment
         android:id="@+id/nav_send"

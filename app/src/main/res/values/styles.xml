@@ -13,6 +13,14 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="DialogThemeExtra" parent="Theme.AppCompat.Dialog.Alert">
+        <item name="android:background">@color/colorextra</item>
+        <item name="colorAccent">@android:color/white</item>
+        <item name="android:fontFamily">@font/arsenal</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="DialogThemeOne" parent="Theme.AppCompat.Dialog.Alert">
         <item name="android:background">@android:color/holo_green_dark</item>
         <item name="colorAccent">@android:color/white</item>

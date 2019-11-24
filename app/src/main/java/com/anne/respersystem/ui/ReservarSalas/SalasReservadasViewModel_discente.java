@@ -1,4 +1,4 @@
-package com.anne.respersystem.ui.ReservarSalas;
+package com.anne.respersystem.ui.reservarsalas;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

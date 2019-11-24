@@ -73,6 +73,7 @@ public class InserirSala extends AppCompatActivity {
                 ref.child("capacidade").setValue(capacidade);
                 ref.child("id").setValue(ref.getKey());
                 ref.child("defeito").setValue("false");
+                ref.child("uid").setValue(MinhaAuth.getUid());
                 Toast.makeText(InserirSala.this, "Sala Inserida com Sucesso!", Toast.LENGTH_SHORT).show();
                 finish();
                 InserirSala.this.overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);

@@ -88,6 +88,7 @@ public class CadastroFuncionario extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (!task.isSuccessful()) {
+                                Toast.makeText(CadastroFuncionario.this, "Email já cadastrado ou Senha muito curta!", Toast.LENGTH_SHORT).show();
                                 Log.d("MeuLog", "Cadastro errado " + task.getException().getMessage());
                             } else {
                                 // Criar firebase databse

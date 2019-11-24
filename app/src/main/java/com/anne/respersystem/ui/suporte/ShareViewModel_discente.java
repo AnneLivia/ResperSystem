@@ -1,14 +1,14 @@
-package com.anne.respersystem.ui.calendar;
+package com.anne.respersystem.ui.suporte;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class CalendarViewModel_discente extends ViewModel {
+public class ShareViewModel_discente extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public CalendarViewModel_discente() {
+    public ShareViewModel_discente() {
         mText = new MutableLiveData<>();
         mText.setValue("");
     }

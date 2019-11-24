@@ -1,4 +1,4 @@
-package com.anne.respersystem.ui.salasDisponiveis;
+package com.anne.respersystem.ui.salasdisponiveis;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
