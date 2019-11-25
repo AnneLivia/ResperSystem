@@ -23,13 +23,7 @@ public class HomeFragment_discente extends Fragment {
         homeViewModelDiscente =
                 ViewModelProviders.of(this).get(HomeViewModel_discente.class);
         View root = inflater.inflate(R.layout.fragment_home_discente, container, false);
-        final TextView textView = root.findViewById(R.id.text_home);
-        homeViewModelDiscente.getText().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+
         return root;
     }
 }

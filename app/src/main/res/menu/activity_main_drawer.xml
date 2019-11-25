@@ -17,7 +17,7 @@
             android:icon="@drawable/reserva_sala"
             android:title="Reservar Sala" />
         <item
-            android:id="@+id/nav_tools"
+            android:id="@+id/nav_calendar"
             android:icon="@drawable/calendario"
             android:title="Calendário" />
     </group>
@@ -29,7 +29,7 @@
                 android:icon="@drawable/ic_menu_send"
                 android:title="Suporte" />
             <item
-                android:id="@+id/nav_send"
+                android:id="@+id/nav_sobre"
                 android:icon="@drawable/sobre"
                 android:title="Sobre" />
         </menu>

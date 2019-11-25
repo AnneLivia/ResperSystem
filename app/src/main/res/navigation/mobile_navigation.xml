@@ -21,13 +21,13 @@
         android:id="@+id/nav_reservarsalas"
         android:name="com.anne.respersystem.ui.reservarsalas.ReservarSalasFragment"
         android:label="Reservar Sala"
-        tools:layout="@layout/fragment_slideshow" />
+        tools:layout="@layout/fragment_reservarsalas" />
 
     <fragment
-        android:id="@+id/nav_tools"
+        android:id="@+id/nav_calendar"
         android:name="com.anne.respersystem.ui.calendar.CalendarFragment"
         android:label="Calendário"
-        tools:layout="@layout/fragment_tools" />
+        tools:layout="@layout/fragment_calendar" />
 
     <fragment
         android:id="@+id/nav_suporte"
@@ -36,8 +36,8 @@
         tools:layout="@layout/fragment_suporte" />
 
     <fragment
-        android:id="@+id/nav_send"
-        android:name="com.anne.respersystem.ui.send.SendFragment"
+        android:id="@+id/nav_sobre"
+        android:name="com.anne.respersystem.ui.sobre.SobreFragment"
         android:label="Sobre"
-        tools:layout="@layout/fragment_send" />
+        tools:layout="@layout/fragment_sobre" />
 </navigation>

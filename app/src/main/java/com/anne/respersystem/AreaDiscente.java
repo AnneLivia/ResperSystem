@@ -1,7 +1,6 @@
 package com.anne.respersystem;
 
 import android.content.Intent;
-import android.hardware.Camera;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -43,7 +42,7 @@ public class AreaDiscente extends AppCompatActivity {
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home_discentes, R.id.nav_salas_discentes,
-                R.id.nav_calendario_discentes, R.id.nav_suporte_discentes, R.id.nav_send_discente)
+                R.id.nav_calendario_discentes, R.id.nav_sobre_discente)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_discente);

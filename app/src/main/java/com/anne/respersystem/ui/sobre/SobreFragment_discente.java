@@ -1,4 +1,4 @@
-package com.anne.respersystem.ui.calendar;
+package com.anne.respersystem.ui.sobre;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,15 +14,15 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.anne.respersystem.R;
 
-public class CalendarFragment_discente extends Fragment {
+public class SobreFragment_discente extends Fragment {
 
-    private CalendarViewModel_discente calendarioViewModel_discente;
+    private SobreViewModel_discente sendViewModelDiscente;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        calendarioViewModel_discente =
-                ViewModelProviders.of(this).get(CalendarViewModel_discente.class);
-        View root = inflater.inflate(R.layout.fragment_calendar_discente, container, false);
+        sendViewModelDiscente =
+                ViewModelProviders.of(this).get(SobreViewModel_discente.class);
+        View root = inflater.inflate(R.layout.fragment_sobre_discente, container, false);
 
         return root;
     }

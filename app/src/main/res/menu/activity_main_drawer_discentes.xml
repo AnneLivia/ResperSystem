@@ -21,11 +21,7 @@
     <item android:title=" ">
         <menu>
             <item
-                android:id="@+id/nav_suporte_discentes"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Suporte" />
-            <item
-                android:id="@+id/nav_send_discente"
+                android:id="@+id/nav_sobre_discente"
                 android:icon="@drawable/sobre"
                 android:title="Sobre" />
         </menu>

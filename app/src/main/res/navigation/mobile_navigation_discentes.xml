@@ -21,17 +21,11 @@
         android:id="@+id/nav_calendario_discentes"
         android:name="com.anne.respersystem.ui.calendar.CalendarFragment_discente"
         android:label="Calendário"
-        tools:layout="@layout/fragment_tools_discente" />
+        tools:layout="@layout/fragment_calendar_discente" />
 
     <fragment
-        android:id="@+id/nav_suporte_discentes"
-        android:name="com.anne.respersystem.ui.suporte.ShareFragment_discente"
-        android:label="Suporte"
-        tools:layout="@layout/fragment_share_discente" />
-
-    <fragment
-        android:id="@+id/nav_send_discente"
-        android:name="com.anne.respersystem.ui.send.SendFragment_discente"
+        android:id="@+id/nav_sobre_discente"
+        android:name="com.anne.respersystem.ui.sobre.SobreFragment_discente"
         android:label="Sobre"
-        tools:layout="@layout/fragment_send_discente" />
+        tools:layout="@layout/fragment_sobre_discente" />
 </navigation>
