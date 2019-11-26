@@ -1,5 +1,6 @@
 package com.anne.respersystem;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -8,6 +9,7 @@ import com.google.android.material.snackbar.Snackbar;
 import android.view.MenuItem;
 import android.view.View;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -118,6 +120,31 @@ public class FuncionarioConectado extends AppCompatActivity {
                     for (DataSnapshot snap : dataSnapshot.getChildren()) {
                         if (snap.child("uid").getValue(String.class).equals(user.getUid())) {
                             name = snap.child("nome").getValue(String.class);
+                            // verificar se o login do usuario já foi aprovado ou não
+                            Boolean aprovou = snap.child("aprovado").getValue(Boolean.class);
+                            if(!aprovou) {
+                                // se for false é porque o admin ainda não aprovou o login do usuário
+                                AlertDialog.Builder alert = new AlertDialog.Builder(FuncionarioConectado.this, R.style.DialogThemeExtra);
+                                // para não permitir que o usuario feche o dialog sem apertar o ok
+                                alert.setCancelable(false);
+
+                                alert.setTitle("Atenção");
+                                alert.setMessage("Seu cadastro ainda não foi aprovado pelo Admin. Se ainda não tiver enviado seu" +
+                                        " documento de comprovação de vínculo com a UFPA, por favor, enviar para o email: adminresper@gmail.com");
+
+                                alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        finish();
+                                        // finalizar login do usuario
+                                        FirebaseAuth.getInstance().signOut();
+                                    }
+                                });
+
+                                alert.show();
+
+                            }
+
                             // colocando nome do funcionario na nav
                             NavigationView nw = (NavigationView) findViewById(R.id.nav_view);
                             View hView = nw.getHeaderView(0);

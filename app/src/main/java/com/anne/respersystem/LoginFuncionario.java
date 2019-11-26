@@ -43,7 +43,6 @@ public class LoginFuncionario extends AppCompatActivity {
     private DatabaseReference ref = database.getReference();
 
     private boolean achou = false; // variavel de controle se tiver achado cpf ou nao em caso de perda do email
-
     Button btVoltar, btEntrar;
     TextView tvEsqueciEmail;
     EditText cpf, email;

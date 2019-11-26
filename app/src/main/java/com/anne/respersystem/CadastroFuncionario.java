@@ -103,8 +103,12 @@ public class CadastroFuncionario extends AppCompatActivity {
                                 ref.child("email").setValue(email.getText().toString());
                                 ref.child("cpf").setValue(cpf.getText().toString());
                                 ref.child("celular").setValue(celular.getText().toString());
+                                ref.child("aprovado").setValue(false);
                                 Toast.makeText(CadastroFuncionario.this, "Cadastrado com successo!", Toast.LENGTH_SHORT).show();
                                 FirebaseAuth.getInstance().signOut();
+                                // mover para tela de bem-vindo
+                                Intent t = new Intent(CadastroFuncionario.this, Welcome.class);
+                                CadastroFuncionario.this.startActivity(t);
                                 finish();
                             }
                         }
