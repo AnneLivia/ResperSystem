@@ -29,6 +29,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.Locale;
 
@@ -173,7 +175,8 @@ public class ReservarSala extends AppCompatActivity {
                                         horainicialreservada = "",
                                         horafinalreservada = "";
 
-                                Boolean podeReservar = false; // para determinar se a sala poderá ser reservada ou não
+                                // para determinar se a sala poderá ser reservada ou não
+                                Boolean podeReservar = true;
                                 for (Pair<String, Pair<String, String> > ress : jaforamreservadas) {
                                     // exibindo na tela as salas que ja foram reservadas
                                     dinicialreservada = "";
@@ -288,6 +291,7 @@ public class ReservarSala extends AppCompatActivity {
                                 }
 
                                 // todos os false tiveram break, porque a partir do momento em que houver um false, a sala não poderia mais ser reservada
+                                // se naofoireservadaainda for true, é proque a sala ainda não foi reservada então, pode reservar
                                 if(podeReservar) {
                                     inserirSalasreservadasNoBd(campoConfSala.getText().toString(),
                                             nameFuncionario.toString(), campoEvento.getText().toString(), campoDescricao.getText().toString(),
@@ -296,8 +300,8 @@ public class ReservarSala extends AppCompatActivity {
                                     receptor = true;
                                     break;
                                 } else {
-                                    Toast.makeText(ReservarSala.this, "A " + campoConfSala.getText().toString()
-                                            + " já está reservada de " + dinicialreservada + " " + horainicialreservada
+                                    Toast.makeText(ReservarSala.this, campoConfSala.getText().toString()
+                                            + " já está reservado (a) de " + dinicialreservada + " " + horainicialreservada
                                             + " até " + dfinalreservada + " - " + horafinalreservada, Toast.LENGTH_SHORT).show();
                                     receptor = true;
                                     break;
@@ -521,6 +525,10 @@ public class ReservarSala extends AppCompatActivity {
                     // para verificar se a sala nao esta com defeito
                     isComDefeito.add(dt.child("defeito").getValue(String.class));
                 }
+
+                // para visualizar salas em ordem crescente por nome
+                Collections.sort(salareservada);
+                adapter.notifyDataSetChanged();
             }
 
             @Override

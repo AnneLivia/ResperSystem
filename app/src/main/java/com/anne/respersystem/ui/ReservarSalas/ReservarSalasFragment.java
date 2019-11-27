@@ -26,6 +26,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.res.ResourcesCompat;
@@ -152,7 +153,6 @@ public class ReservarSalasFragment extends Fragment {
 
         salareservadas.setAdapter(adapter);
 
-
         // populando arrays com os dados
         ref.child("salas_reservadas").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -200,9 +200,6 @@ public class ReservarSalasFragment extends Fragment {
                                                 ref.child("salas_reservadas").child(ids.get(position)).removeValue();
                                                 // ja que o dado nao carrega ao mesmo tempo que o firebase e atualizado, remover do firebase logo
                                                 adapter.remove(adapter.getItem(position));
-                                                Intent intent = getActivity().getIntent();
-                                                getActivity().finish();
-                                                startActivity(intent);
                                                 //getActivity().finish();
                                             } catch (Exception e) {
                                                 e.printStackTrace();
@@ -231,7 +228,4 @@ public class ReservarSalasFragment extends Fragment {
             }
         });
     }
-
-
-
 }
