@@ -4,11 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -66,5 +63,19 @@ public class AreaDiscente extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_discente);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        // sempre que iniciar o app, verificar as salas reservadas e remover as que a data de reserva final tenha passado
+        AtualizarReserva.atualizarReservas();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        // sempre que parar o app, verificar as salas reservadas e remover as que a data de reserva final tenha passado
+        AtualizarReserva.atualizarReservas();
     }
 }

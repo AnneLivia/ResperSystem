@@ -79,6 +79,7 @@ public class EventosPorDia extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         EventosPorDia.this.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        AtualizarReserva.atualizarReservas();
 
         // Inicializando arrays
         salas_reservadas = new ArrayList<String>();
@@ -195,5 +196,6 @@ public class EventosPorDia extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         EventosPorDia.this.overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+        AtualizarReserva.atualizarReservas();
     }
 }

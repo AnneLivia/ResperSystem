@@ -163,12 +163,16 @@ public class LoginFuncionario extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
+        // sempre que iniciar o app, verificar as salas reservadas e remover as que a data de reserva final tenha passado
+        AtualizarReserva.atualizarReservas();
         MinhaAuth.addAuthStateListener(MinhaAuthListener);
     }
 
     @Override
     public void onStop() {
         super.onStop();
+        // sempre que iniciar o app, verificar as salas reservadas e remover as que a data de reserva final tenha passado
+        AtualizarReserva.atualizarReservas();
         MinhaAuth.removeAuthStateListener(MinhaAuthListener);
     }
 

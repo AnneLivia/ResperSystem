@@ -21,7 +21,7 @@
         android:id="@+id/nav_reservarsalas"
         android:name="com.anne.respersystem.ui.reservarsalas.ReservarSalasFragment"
         android:label="Reservar Sala"
-        tools:layout="@layout/fragment_reservarsalas" />
+        tools:layout="@layout/fragment_reservarsala" />
 
     <fragment
         android:id="@+id/nav_calendar"

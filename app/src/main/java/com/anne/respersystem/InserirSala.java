@@ -78,5 +78,19 @@ public class InserirSala extends AppCompatActivity {
                 finish();
                 InserirSala.this.overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        // sempre que iniciar o app, verificar as salas reservadas e remover as que a data de reserva final tenha passado
+        AtualizarReserva.atualizarReservas();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        // sempre que parar o app, verificar as salas reservadas e remover as que a data de reserva final tenha passado
+        AtualizarReserva.atualizarReservas();
+    }
 }
 

@@ -15,6 +15,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.anne.respersystem.AtualizarReserva;
 import com.anne.respersystem.R;
 import com.anne.respersystem.ReservarSala;
 import com.google.firebase.auth.FirebaseAuth;
@@ -87,7 +88,7 @@ public class ReservarSalasFragment extends Fragment {
     @Override
     public void onStart(){
         super.onStart();
-
+        AtualizarReserva.atualizarReservas();
         // obtendo nome
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -220,6 +221,47 @@ public class ReservarSalasFragment extends Fragment {
                         }
                     }
                 });
+
+                // para editar informações
+                salareservadas.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                    @Override
+                    public boolean onItemLongClick(AdapterView<?> adapterView, final View view, final int position, long l) {
+                        if (userUid.get(position).equals(user.getUid())) {
+                            DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    switch (which) {
+                                        case DialogInterface.BUTTON_POSITIVE:
+                                            // joga id para outra tela
+                                            Toast.makeText(getContext(), "Vai editar a sala de id: " + ids.get(position), Toast.LENGTH_SHORT).show();
+                                            try {
+                                                //Intent intent = getActivity().getIntent();
+                                                //getActivity().finish();
+                                                //startActivity(intent);
+                                                //getActivity().finish();
+                                            } catch (Exception e) {
+                                                e.printStackTrace();
+                                            }
+                                            break;
+                                        case DialogInterface.BUTTON_NEGATIVE:
+                                            // nao faca nada
+                                            break;
+                                    }
+                                }
+                            };
+
+                            AlertDialog.Builder builder = new AlertDialog.Builder(getContext(), R.style.DialogThemeTwo);
+                            builder.setMessage("Deseja editar informações referente a reserva da sala?")
+                                    .setPositiveButton("Sim", dialogClickListener)
+                                    .setNegativeButton("Não", dialogClickListener).show();
+
+
+                        } else {
+                            Toast.makeText(getContext(), "Não foi você que reservou a sala!", Toast.LENGTH_SHORT).show();
+                        }
+                        return true;
+                    }
+                });
             }
 
             @Override
@@ -227,5 +269,12 @@ public class ReservarSalasFragment extends Fragment {
 
             }
         });
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        // sempre que parar o app, verificar as salas reservadas e remover as que a data de reserva final tenha passado
+        AtualizarReserva.atualizarReservas();
     }
 }

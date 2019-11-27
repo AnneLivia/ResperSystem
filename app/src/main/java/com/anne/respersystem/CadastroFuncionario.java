@@ -72,12 +72,14 @@ public class CadastroFuncionario extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         MinhaAuth.addAuthStateListener(MinhaAuthListener);
+        AtualizarReserva.atualizarReservas();
     }
 
     @Override
     public void onStop() {
         super.onStop();
         MinhaAuth.removeAuthStateListener(MinhaAuthListener);
+        AtualizarReserva.atualizarReservas();
     }
 
     public void cadastrarUsuario(View v) {

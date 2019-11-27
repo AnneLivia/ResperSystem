@@ -10,6 +10,7 @@ import android.widget.CalendarView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.anne.respersystem.AtualizarReserva;
 import com.anne.respersystem.EventosPorDia;
 import com.anne.respersystem.R;
 import com.google.firebase.database.DataSnapshot;
@@ -115,6 +116,9 @@ public class CalendarFragment_discente extends Fragment {
 
         datas = new ArrayList<>();
 
+        // sempre que iniciar o app, verificar as salas reservadas e remover as que a data de reserva final tenha passado
+        AtualizarReserva.atualizarReservas();
+
         super.onStart();
         // chama referencia para sala reservadas
         ref.child("salas_reservadas").addListenerForSingleValueEvent(new ValueEventListener() {
@@ -148,5 +152,12 @@ public class CalendarFragment_discente extends Fragment {
 
             }
         });
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        // sempre que parar o app, verificar as salas reservadas e remover as que a data de reserva final tenha passado
+        AtualizarReserva.atualizarReservas();
     }
 }

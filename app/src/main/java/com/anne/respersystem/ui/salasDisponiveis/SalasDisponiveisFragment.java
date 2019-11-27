@@ -19,6 +19,7 @@ import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.anne.respersystem.AtualizarReserva;
 import com.anne.respersystem.InserirSala;
 import com.anne.respersystem.R;
 import com.google.firebase.database.DataSnapshot;
@@ -81,6 +82,9 @@ public class SalasDisponiveisFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
+
+        // sempre que iniciar o app, verificar as salas reservadas e remover as que a data de reserva final tenha passado
+        AtualizarReserva.atualizarReservas();
 
         // Inicializando arrays
         salas = new ArrayList<String>();
@@ -229,6 +233,13 @@ public class SalasDisponiveisFragment extends Fragment {
             public void onCancelled(DatabaseError databaseError) {
             }
         });
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        // sempre que parar o app, verificar as salas reservadas e remover as que a data de reserva final tenha passado
+        AtualizarReserva.atualizarReservas();
     }
 
 }

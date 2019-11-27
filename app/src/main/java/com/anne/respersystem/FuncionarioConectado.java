@@ -3,9 +3,6 @@ package com.anne.respersystem;
 import android.content.DialogInterface;
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
 import android.view.MenuItem;
 import android.view.View;
 
@@ -97,7 +94,7 @@ public class FuncionarioConectado extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-
+        AtualizarReserva.atualizarReservas();
         // obtendo nome
 
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -152,5 +149,12 @@ public class FuncionarioConectado extends AppCompatActivity {
                 }
             });
         }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        // sempre que parar o app, verificar as salas reservadas e remover as que a data de reserva final tenha passado
+        AtualizarReserva.atualizarReservas();
     }
 }

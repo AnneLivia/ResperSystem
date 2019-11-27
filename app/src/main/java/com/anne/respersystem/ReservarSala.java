@@ -456,6 +456,8 @@ public class ReservarSala extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
+        AtualizarReserva.atualizarReservas();
+
         // obtendo nome
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -558,6 +560,14 @@ public class ReservarSala extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
+    }
+
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        // sempre que parar o app, verificar as salas reservadas e remover as que a data de reserva final tenha passado
+        AtualizarReserva.atualizarReservas();
     }
 
 }

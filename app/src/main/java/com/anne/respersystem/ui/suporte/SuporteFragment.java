@@ -20,6 +20,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 
+import com.anne.respersystem.AtualizarReserva;
 import com.anne.respersystem.LoginFuncionario;
 import com.anne.respersystem.MainActivity;
 import com.anne.respersystem.R;
@@ -178,6 +179,9 @@ public class SuporteFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
+        // sempre que iniciar o app, verificar as salas reservadas e remover as que a data de reserva final tenha passado
+        AtualizarReserva.atualizarReservas();
+
         if (user == null) {
             // se usuario estiver vazio, encerra a activity
             getActivity().finish();
@@ -207,6 +211,12 @@ public class SuporteFragment extends Fragment {
                 }
             });
         }
+    }
 
+    @Override
+    public void onStop() {
+        super.onStop();
+        // sempre que parar o app, verificar as salas reservadas e remover as que a data de reserva final tenha passado
+        AtualizarReserva.atualizarReservas();
     }
 }
