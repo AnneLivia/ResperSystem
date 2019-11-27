@@ -28,66 +28,66 @@
 
     <EditText
         android:id="@+id/campoEmailFuncionario"
-        app:fontFamily="@font/assistant_extralight"
         android:layout_width="0dp"
-        android:backgroundTint="#00D307"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
+        android:backgroundTint="#00D307"
         android:ems="10"
         android:hint="Email"
         android:inputType="textEmailAddress"
         android:textSize="20sp"
+        app:fontFamily="@font/assistant_extralight"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/campoNomeFuncionario" />
 
     <EditText
         android:id="@+id/campoCelularFuncionario"
-        app:fontFamily="@font/assistant_extralight"
         android:layout_width="0dp"
-        android:backgroundTint="#00D307"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
+        android:backgroundTint="#00D307"
         android:ems="10"
         android:hint="Celular"
         android:inputType="phone"
         android:textSize="20sp"
+        app:fontFamily="@font/assistant_extralight"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/campoEmailFuncionario" />
 
     <EditText
         android:id="@+id/campoCPFfuncionario"
-        app:fontFamily="@font/assistant_extralight"
         android:layout_width="0dp"
-        android:backgroundTint="#00D307"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
+        android:backgroundTint="#00D307"
         android:ems="10"
         android:hint="CPF"
         android:inputType="phone"
         android:textSize="20sp"
+        app:fontFamily="@font/assistant_extralight"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/campoCelularFuncionario"/>
+        app:layout_constraintTop_toBottomOf="@+id/campoCelularFuncionario" />
 
     <Button
         android:id="@+id/btCadastrarFuncionario"
         android:layout_width="313dp"
         android:layout_height="50dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         android:background="#4CAF50"
         android:onClick="cadastrarUsuario"
         android:text="Cadastrar"
@@ -118,12 +118,11 @@
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="163dp"
-        android:layout_height="159dp"
+        android:layout_width="130dp"
+        android:layout_height="105dp"
         android:layout_marginTop="28dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/signup" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

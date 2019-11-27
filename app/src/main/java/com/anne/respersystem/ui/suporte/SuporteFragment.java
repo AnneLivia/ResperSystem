@@ -61,13 +61,6 @@ public class SuporteFragment extends Fragment {
         shareViewModel =
                 ViewModelProviders.of(this).get(SuporteViewModel.class);
         View root = inflater.inflate(R.layout.fragment_suporte, container, false);
-        final TextView textView = root.findViewById(R.id.text_share);
-        shareViewModel.getText().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
 
         nomeedit = (EditText) root.findViewById(R.id.campoSuporteNome);
         cpfedit = (EditText) root.findViewById(R.id.campoSuporteCPF);

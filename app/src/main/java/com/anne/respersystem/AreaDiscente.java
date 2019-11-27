@@ -28,14 +28,6 @@ public class AreaDiscente extends AppCompatActivity {
         setContentView(R.layout.activity_main_discente);
         Toolbar toolbar = findViewById(R.id.toolbar_discente);
         setSupportActionBar(toolbar);
-        FloatingActionButton fab = findViewById(R.id.fab_discente);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
         DrawerLayout drawer = findViewById(R.id.drawer_layout_discente);
         NavigationView navigationView = findViewById(R.id.nav_view_discentes);
         // Passing each menu ID as a set of Ids because each

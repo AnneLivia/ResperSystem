@@ -11,39 +11,40 @@
         android:id="@+id/btEntrar"
         android:layout_width="220dp"
         android:layout_height="74dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="16dp"
         android:background="#4CAF50"
         android:text="Entrar"
         android:textColor="#fff"
         android:textSize="20sp"
         android:textStyle="bold"
         app:fontFamily="@font/assistant_semibold"
-        app:layout_constraintBottom_toTopOf="@+id/btCadastrar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <Button
         android:id="@+id/btCadastrar"
         android:layout_width="220dp"
         android:layout_height="74dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="16dp"
         android:background="#4CAF50"
         android:text="Cadastrar"
         android:textColor="#fff"
         android:textSize="20sp"
         android:textStyle="bold"
         app:fontFamily="@font/assistant_semibold"
-        app:layout_constraintBottom_toTopOf="@+id/btVoltar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btEntrar" />
 
     <Button
         android:id="@+id/btVoltar"
         android:layout_width="220dp"
         android:layout_height="74dp"
-        android:layout_marginBottom="96dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="32dp"
         android:background="#8BC34A"
         android:text="Voltar"
         android:textColor="#fff"
@@ -53,19 +54,19 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btCadastrar"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="317dp"
-        android:layout_height="206dp"
-        android:layout_marginTop="32dp"
-        app:layout_constraintBottom_toTopOf="@+id/btEntrar"
+        android:layout_width="297dp"
+        android:layout_height="192dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.609"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/worker" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
