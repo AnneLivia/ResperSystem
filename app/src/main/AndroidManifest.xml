@@ -4,12 +4,13 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/resper_logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/resper_logo_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Welcome"></activity>
+        <activity android:name=".EditarReserva"></activity>
+        <activity android:name=".Welcome" />
         <activity android:name=".EventosPorDia" />
         <activity android:name=".InserirSala" />
         <activity android:name=".LoginFuncionario" />

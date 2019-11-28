@@ -11,11 +11,13 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.anne.respersystem.AtualizarReserva;
+import com.anne.respersystem.EditarReserva;
 import com.anne.respersystem.R;
 import com.anne.respersystem.ReservarSala;
 import com.google.firebase.auth.FirebaseAuth;
@@ -233,12 +235,11 @@ public class ReservarSalasFragment extends Fragment {
                                     switch (which) {
                                         case DialogInterface.BUTTON_POSITIVE:
                                             // joga id para outra tela
-                                            Toast.makeText(getContext(), "Vai editar a sala de id: " + ids.get(position), Toast.LENGTH_SHORT).show();
                                             try {
-                                                //Intent intent = getActivity().getIntent();
-                                                //getActivity().finish();
-                                                //startActivity(intent);
-                                                //getActivity().finish();
+                                                Intent intent = new Intent(getActivity(), EditarReserva.class);
+                                                intent.putExtra("id_reserva", ids.get(position));
+                                                startActivity(intent);
+                                                getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                                             } catch (Exception e) {
                                                 e.printStackTrace();
                                             }

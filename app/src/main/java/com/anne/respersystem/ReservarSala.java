@@ -50,8 +50,6 @@ public class ReservarSala extends AppCompatActivity {
     AutoCompleteTextView campoConfSala;
     ArrayAdapter<String> adapter;
 
-    TextView campoFuncionario;
-
     //data e hora inicial
     Calendar calendarioinicial;
     DatePickerDialog PegarDatainicialDlg;
@@ -457,7 +455,6 @@ public class ReservarSala extends AppCompatActivity {
         super.onStart();
 
         AtualizarReserva.atualizarReservas();
-
         // obtendo nome
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -472,8 +469,6 @@ public class ReservarSala extends AppCompatActivity {
                         if (snap.child("uid").getValue(String.class).equals(user.getUid())) {
                             nameFuncionario = snap.child("nome").getValue(String.class);
                             // colocando nome do funcionario na nav
-                            //NavigationView nw = (NavigationView) findViewById(R.id.nav_view);
-                            //View hView = nw.getHeaderView(0);
                             TextView nav_user = (TextView) findViewById(R.id.campoFuncionario);
                             nav_user.setText(nameFuncionario);
                             break;
