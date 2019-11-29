@@ -15,7 +15,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="40dp"
-        android:background="#8BC34A"
+        android:background="@drawable/button_background_color2"
         android:text="Voltar"
         android:textColor="#fff"
         android:textSize="20sp"

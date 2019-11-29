@@ -9,20 +9,26 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:checkMark="?android:attr/textCheckMark"
         android:gravity="left|center_vertical"
-        android:layout_marginTop="5dp"
-        android:textColor="#000000"
-        android:checkMark="?android:attr/textCheckMark" />
+        android:textColor="#000000" />
 
     <TextView
         android:id="@+id/texto2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginBottom="15dp"
+        android:layout_marginBottom="10dp"
         android:gravity="left|center_vertical"
-        android:textColor="#000000"
-        />
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/ApresentaEvento"
+        android:textColor="#4CAF50"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Evento:" />
 
     <TextView
         android:id="@+id/texto3"
@@ -30,37 +36,50 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="2dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginBottom="2dp"
         android:gravity="left|center_vertical"
         android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/ApresentaDescricao"
+        android:textColor="#4CAF50"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Descrição:" />
 
     <TextView
         android:id="@+id/texto4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginBottom="15dp"
+        android:layout_marginBottom="2dp"
         android:gravity="left|center_vertical"
-        android:textColor="#000000"
-         />
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/ApresentaSite"
+        android:textColor="#4CAF50"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Site:" />
+
     <TextView
         android:id="@+id/texto5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginBottom="15dp"
+        android:layout_marginBottom="8dp"
         android:gravity="left|center_vertical"
-        android:textColor="#000000"
-         />
+        android:textColor="#000000" />
+
     <TextView
         android:id="@+id/texto6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginBottom="15dp"
+        android:layout_marginBottom="5dp"
         android:gravity="left|center_vertical"
-        android:textColor="#000000"
-        />
+        android:textColor="#000000" />
 
 
 </LinearLayout>
