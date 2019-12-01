@@ -101,6 +101,28 @@ public class ReservarSala extends AppCompatActivity {
         campoSite = (EditText) findViewById(R.id.campoSite);
         //campoFuncionario = (TextView) findViewById(R.id.campoFuncionario);
 
+        // para verificar se usuario está conectado ou não
+        DatabaseReference connectedRef = FirebaseDatabase.getInstance().getReference(".info/connected");
+        connectedRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                boolean connected = snapshot.getValue(Boolean.class);
+                if (connected) {
+                    //Toast.makeText(getApplicationContext(), "Conectado.", Toast.LENGTH_SHORT).show();
+                } else {
+                    // se não entiver volta
+                    Toast.makeText(getApplicationContext(), "Sem conexão.", Toast.LENGTH_SHORT).show();
+                    finish();
+                    ReservarSala.this.overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                System.err.println("Listener was cancelled");
+            }
+        });
+
         btVoltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -305,7 +327,29 @@ public class ReservarSala extends AppCompatActivity {
                                     break;
                                 }
                             } else {
-                                Toast.makeText(ReservarSala.this, "Preencher todos os campos!", Toast.LENGTH_SHORT).show();
+                                if(campoConfSala.getText().toString().equals("") || campoConfSala.getText().toString().isEmpty()) {
+                                    campoConfSala.setError("Selecione a sala que desseja reservar");
+                                    campoConfSala.requestFocus();
+                                }
+
+                                if(campoEvento.getText().toString().equals("") || campoEvento.getText().toString().isEmpty()) {
+                                    campoEvento.setError("Insira o nome do evento");
+                                    campoEvento.requestFocus();
+                                }
+
+                                if(campoDataHoraInicial.getText().toString().isEmpty() ||
+                                        campoDataHoraInicial.getText().toString().equalsIgnoreCase("DATA/HORA FINAL")
+                                || !(campoDataHoraInicial.getText().toString().length() == 16)) {
+                                    Toast.makeText(ReservarSala.this, "Insira data e hora inicial.", Toast.LENGTH_SHORT).show();
+                                }
+
+                                if(campoDataHoraFinal.getText().toString().isEmpty() ||
+                                        campoDataHoraFinal.getText().toString().equalsIgnoreCase("DATA/HORA FINAL")
+                                        || !(campoDataHoraFinal.getText().toString().length() == 16)) {
+                                    Toast.makeText(ReservarSala.this, "Insira data e hora final.", Toast.LENGTH_SHORT).show();
+                                }
+
+                               // Toast.makeText(ReservarSala.this, "Preencher todos os campos!", Toast.LENGTH_SHORT).show();
                                 receptor = true;
                                 break;
                             }

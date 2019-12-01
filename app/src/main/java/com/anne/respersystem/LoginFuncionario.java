@@ -183,16 +183,41 @@ public class LoginFuncionario extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (!task.isSuccessful()) {
+                        // identificar o tipo de erro que ocorreu
+                        String typeOfError = task.getException().getMessage();
+                        // erro de email
+                        if(typeOfError.equals("There is no user record corresponding to this identifier. The user may have been deleted.")) {
+                            Toast.makeText(LoginFuncionario.this, "Não existe usuário cadastrado no sistema com esse email.", Toast.LENGTH_SHORT).show();
+                        } else if (typeOfError.equals("The password is invalid or the user does not have a password.")) {
+                            // erro de senha (CPF)
+                            Toast.makeText(LoginFuncionario.this, "Credencial Inválida. Por favor, inserir seu CPF corretamente.", Toast.LENGTH_SHORT).show();
+                        } else if (typeOfError.equals("An internal error has occurred. [ 7: ]")) {
+                            // erro de conexão
+                            Toast.makeText(LoginFuncionario.this, "Falha ao realizar o login, provavelmente causado por sua conexão com a internet.", Toast.LENGTH_SHORT).show();
+                        } else if (typeOfError.equals("The email address is badly formatted.")) {
+                            email.setError("Forneça um endereço de email válido.");
+                            email.requestFocus();
+                        }
                         // se nao foi um sucesso
-                        Log.d("MeuLog", "Login nao realizado");
-                        Toast.makeText(LoginFuncionario.this, "Login Invalido!", Toast.LENGTH_SHORT).show();
+                        Log.d("MeuLog", "Login nao realizado: " + typeOfError);
                     } else {
                         Toast.makeText(LoginFuncionario.this, "Bem vindo (a)!", Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(getApplicationContext(), FuncionarioConectado.class);
+                        startActivity(i);
+                        LoginFuncionario.this.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                     }
                 }
             });
         } else {
-            Toast.makeText(LoginFuncionario.this, "Preencher campos para o login", Toast.LENGTH_SHORT).show();
+            if(email.getText().toString().equals("") || email.getText().toString().isEmpty()) {
+                email.setError("Forneça seu email.");
+                email.requestFocus();
+            }
+
+            if(cpf.getText().toString().equals("") || cpf.getText().toString().isEmpty()) {
+                cpf.setError("Insira seu CPF corretamente");
+                cpf.requestFocus();
+            }
         }
     }
 }

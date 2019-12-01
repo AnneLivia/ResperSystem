@@ -83,14 +83,30 @@ public class CadastroFuncionario extends AppCompatActivity {
     }
 
     public void cadastrarUsuario(View v) {
-        if (!email.getText().toString().equals("") && !cpf.getText().toString().equals("") &&
-                !celular.getText().toString().equals("") && !nomeCompleto.getText().toString().equals("")) {
+        if (!email.getText().toString().equals("") && isCPF(cpf.getText().toString()) &&
+                !celular.getText().toString().equals("") && !nomeCompleto.getText().toString().equals("") &&
+                !isOnlySpace(nomeCompleto.getText().toString())) {
             MinhaAuth.createUserWithEmailAndPassword(email.getText().toString(), cpf.getText().toString()).addOnCompleteListener(
                     this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (!task.isSuccessful()) {
-                                Toast.makeText(CadastroFuncionario.this, "Email já cadastrado ou Senha muito curta!", Toast.LENGTH_SHORT).show();
+                                // identificar o tipo de erro que ocorreu
+                                String typeOfError = task.getException().getMessage();
+                                // erro de email
+                                if(typeOfError.equals("The email address is already in use by another account.")) {
+                                    Toast.makeText(CadastroFuncionario.this, "Email já cadastrado no sistema.", Toast.LENGTH_SHORT).show();
+                                } else if (typeOfError.equals("The given password is invalid. [ Password should be at least 6 characters ]")) {
+                                    // erro de senha (CPF)
+                                    Toast.makeText(CadastroFuncionario.this, "Senha muito curta. Por favor, digitar todos os digitos de seu CPF.", Toast.LENGTH_SHORT).show();
+                                } else if (typeOfError.equals("An internal error has occurred. [ 7: ]")) {
+                                    // erro de conexão
+                                    Toast.makeText(CadastroFuncionario.this, "Falha ao cadastrar, provavelmente causado por sua conexão com a internet.", Toast.LENGTH_SHORT).show();
+                                } else if (typeOfError.equals("The email address is badly formatted.")) {
+                                    email.setError("Forneça um endereço de email válido.");
+                                    email.requestFocus();
+                                }
+                               // Toast.makeText(CadastroFuncionario.this, "Email já cadastrado ou Senha muito curta!", Toast.LENGTH_SHORT).show();
                                 Log.d("MeuLog", "Cadastro errado " + task.getException().getMessage());
                             } else {
                                 // Criar firebase databse
@@ -116,7 +132,57 @@ public class CadastroFuncionario extends AppCompatActivity {
                         }
                     });
         } else {
-            Toast.makeText(CadastroFuncionario.this, "Preencher todos os campos para efetuar o login!", Toast.LENGTH_SHORT).show();
+            if(!isCPF(cpf.getText().toString())) {
+                cpf.setError("Forneça um CPF válido e sem símbolos.");
+                // o popup do erro só aparece quando o edittext está em focus. então colocar focus nele automaticamente para o popup aparecer
+                cpf.requestFocus();
+            }
+
+            if(celular.getText().toString().isEmpty() || celular.getText().toString().equals("")) {
+                celular.setError("Forneça seu número de celular");
+                celular.requestFocus();
+            }
+
+            if(email.getText().toString().isEmpty() || email.getText().toString().equals("")) {
+                email.setError("Forneça seu email.");
+                email.requestFocus();
+            }
+
+            if(nomeCompleto.getText().toString().isEmpty() || nomeCompleto.getText().toString().equals("")
+                    || isOnlySpace(nomeCompleto.getText().toString())) {
+                nomeCompleto.setError("Insira seu nome.");
+                nomeCompleto.requestFocus();
+            }
         }
+    }
+
+    // função para checar se o CPF está no formato valido
+    boolean isCPF(String cpf) {
+        if(cpf.length() != 11) {
+          return false; // cpf tem 11 digitos sem qualquer simbolo
+        } else {
+            for (int i = 0; i < cpf.length(); i++) {
+                // se o char atual não for igual a um número, então é simbolo, retornar false
+                if(!(cpf.charAt(i) >= '0' && cpf.charAt(i) <= '9')) {
+                    return false;
+                }
+            }
+        }
+        // se chegou aqui é porque é cpf
+        return true;
+    }
+
+    boolean isOnlySpace(String s) {
+        int count = 0;
+        for (int i = 0; i < s.length(); i++) {
+            // se o char atual não for igual a um número, então é simbolo, retornar false
+            if(s.charAt(i) == ' ') {
+                count++;
+            }
+        }
+        // se o valor em count for do mesmo tamanho da string é porque só existe espaço
+        if(count == s.length())
+            return true;
+        return false;
     }
 }
