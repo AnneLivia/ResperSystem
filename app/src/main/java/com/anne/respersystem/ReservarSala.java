@@ -1,7 +1,9 @@
 package com.anne.respersystem;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Pair;
@@ -66,6 +68,8 @@ public class ReservarSala extends AppCompatActivity {
     //Array para recerber a sala
     private ArrayList<String> salareservada;
     private ArrayList<String> isComDefeito;
+
+    boolean podeReservarMesmoComDefeito;
 
     // para receber as salas que já foram reservadas
     ArrayList<Pair<String, Pair<String, String> > > jaforamreservadas; // o map guardara na chave a sala e no pair, ele guardara o inicio e o fim
@@ -145,155 +149,117 @@ public class ReservarSala extends AppCompatActivity {
                 for(int i = 0; i < salareservada.size(); i++){
                     if(campo.equals(salareservada.get(i))){
                         // Checar se a sala nao esta com defeito, caso esteja alertar o usuario
-                        if(isComDefeito.get(i).equals("false")) {
-                            if (!campoConfSala.getText().toString().isEmpty()
-                                    && !campoEvento.getText().toString().isEmpty()
-                                    && !campoDataHoraInicial.getText().toString().isEmpty()
-                                    && !campoDataHoraFinal.getText().toString().isEmpty()
-                                    && !campoDataHoraInicial.getText().toString().equalsIgnoreCase("DATA/HORA FINAL")
-                                    && !campoDataHoraFinal.getText().toString().equalsIgnoreCase("DATA/HORA INICIAL")
-                                    && campoDataHoraInicial.getText().toString().length() == 16
-                                    && campoDataHoraFinal.getText().toString().length() == 16 ) {
+                        // if(isComDefeito.get(i).equals("false")) {
+                        if (!campoConfSala.getText().toString().isEmpty()
+                                && !campoEvento.getText().toString().isEmpty()
+                                && !campoDataHoraInicial.getText().toString().isEmpty()
+                                && !campoDataHoraFinal.getText().toString().isEmpty()
+                                && !campoDataHoraInicial.getText().toString().equalsIgnoreCase("DATA/HORA FINAL")
+                                && !campoDataHoraFinal.getText().toString().equalsIgnoreCase("DATA/HORA INICIAL")
+                                && campoDataHoraInicial.getText().toString().length() == 16
+                                && campoDataHoraFinal.getText().toString().length() == 16 ) {
 
-                                // verificar também se não é igual a DATA/HORA FINAL e DATA/HORA INICIAL pois caso
-                                // o usuario não entre com uma data, ainda sim, haverá esse valor lá
-                                // o tamanho de campodahorainicial deve ser 16 porque se for menor é
-                                // porque o usuario não inseriu hora e data completo
+                            // verificar também se não é igual a DATA/HORA FINAL e DATA/HORA INICIAL pois caso
+                            // o usuario não entre com uma data, ainda sim, haverá esse valor lá
+                            // o tamanho de campodahorainicial deve ser 16 porque se for menor é
+                            // porque o usuario não inseriu hora e data completo
 
-                                // obter somente data inicial e final e somente hora inicial e final separados
-                                String horainicial = "", horafinal = "", dinicial = "", dfinal = "";
-                                boolean isdate = false; // usada para indicar momento de pegar somente hora
-                                for(int j = 0; j < campoDataHoraInicial.getText().toString().length(); j++) {
-                                    if(campoDataHoraInicial.getText().toString().charAt(j) != ' ' && !isdate) {
-                                        dinicial+=campoDataHoraInicial.getText().toString().charAt(j);
-                                        dfinal+=campoDataHoraFinal.getText().toString().charAt(j);
+                            // obter somente data inicial e final e somente hora inicial e final separados
+                            String horainicial = "", horafinal = "", dinicial = "", dfinal = "";
+                            boolean isdate = false; // usada para indicar momento de pegar somente hora
+                            for(int j = 0; j < campoDataHoraInicial.getText().toString().length(); j++) {
+                                if(campoDataHoraInicial.getText().toString().charAt(j) != ' ' && !isdate) {
+                                    dinicial+=campoDataHoraInicial.getText().toString().charAt(j);
+                                    dfinal+=campoDataHoraFinal.getText().toString().charAt(j);
+                                } else {
+                                    isdate = true;
+                                    // assim que chegar aqui, será um espaço, necessario verificar isso para não coloca-lo na string
+                                    if(campoDataHoraInicial.getText().toString().charAt(j) != ' ') {
+                                        horainicial+=campoDataHoraInicial.getText().toString().charAt(j);
+                                        horafinal+=campoDataHoraFinal.getText().toString().charAt(j);
+                                    }
+                                }
+                            }
+
+                            // Transformar data inicial e final para Date
+                            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+
+                            Date datainicial = new Date(), datafinal = new Date();
+                            Date datainicialreservada = new Date(), datafinalreservada = new Date();
+
+                            try {
+                                datainicial = sdf.parse(dinicial);
+                                datafinal = sdf.parse(dfinal);
+                            } catch (ParseException pex){
+                                pex.printStackTrace();
+                            }
+
+                            String dinicialreservada = "",
+                                    dfinalreservada = "",
+                                    horainicialreservada = "",
+                                    horafinalreservada = "";
+
+                            // para determinar se a sala poderá ser reservada ou não
+                            Boolean podeReservar = true;
+                            for (Pair<String, Pair<String, String> > ress : jaforamreservadas) {
+                                // exibindo na tela as salas que ja foram reservadas
+                                dinicialreservada = "";
+                                dfinalreservada = "";
+                                horainicialreservada = "";
+                                horafinalreservada = "";
+
+                                // obtendo data e hora separada para o já reservado também
+                                isdate = false;
+                                for(int j = 0; j < ress.second.first.length(); j++) {
+                                    if(ress.second.first.charAt(j) != ' ' && !isdate) {
+                                        dinicialreservada+=ress.second.first.charAt(j);
+                                        dfinalreservada+=ress.second.second.charAt(j);
                                     } else {
                                         isdate = true;
                                         // assim que chegar aqui, será um espaço, necessario verificar isso para não coloca-lo na string
-                                        if(campoDataHoraInicial.getText().toString().charAt(j) != ' ') {
-                                            horainicial+=campoDataHoraInicial.getText().toString().charAt(j);
-                                            horafinal+=campoDataHoraFinal.getText().toString().charAt(j);
+                                        if(ress.second.first.charAt(j) != ' ') {
+                                            horainicialreservada+=ress.second.first.charAt(j);
+                                            horafinalreservada+=ress.second.second.charAt(j);
                                         }
                                     }
                                 }
 
-                                // Transformar data inicial e final para Date
-                                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-
-                                Date datainicial = new Date(), datafinal = new Date();
-                                Date datainicialreservada = new Date(), datafinalreservada = new Date();
-
                                 try {
-                                    datainicial = sdf.parse(dinicial);
-                                    datafinal = sdf.parse(dfinal);
+                                    datainicialreservada = sdf.parse(dinicialreservada);
+                                    datafinalreservada = sdf.parse(dfinalreservada);
                                 } catch (ParseException pex){
                                     pex.printStackTrace();
                                 }
 
-                                String dinicialreservada = "",
-                                        dfinalreservada = "",
-                                        horainicialreservada = "",
-                                        horafinalreservada = "";
-
-                                // para determinar se a sala poderá ser reservada ou não
-                                Boolean podeReservar = true;
-                                for (Pair<String, Pair<String, String> > ress : jaforamreservadas) {
-                                    // exibindo na tela as salas que ja foram reservadas
-                                    dinicialreservada = "";
-                                    dfinalreservada = "";
-                                    horainicialreservada = "";
-                                    horafinalreservada = "";
-
-                                    // obtendo data e hora separada para o já reservado também
-                                    isdate = false;
-                                    for(int j = 0; j < ress.second.first.length(); j++) {
-                                        if(ress.second.first.charAt(j) != ' ' && !isdate) {
-                                            dinicialreservada+=ress.second.first.charAt(j);
-                                            dfinalreservada+=ress.second.second.charAt(j);
-                                        } else {
-                                            isdate = true;
-                                            // assim que chegar aqui, será um espaço, necessario verificar isso para não coloca-lo na string
-                                            if(ress.second.first.charAt(j) != ' ') {
-                                                horainicialreservada+=ress.second.first.charAt(j);
-                                                horafinalreservada+=ress.second.second.charAt(j);
+                                // primeiro veriricar se a sala que foi reservada e igual a analisada
+                                if (ress.first.equals(campoConfSala.getText().toString())) {
+                                    // O trecho de codigo abaixo serve para verificar as datas
+                                    // primeiro cenário se o evento ocorrer em apenas 1 dia, o que poderá desempatar é a hora, mas.
+                                    if(datainicial.equals(datafinal)) {
+                                        // primeiro verificar se data inicial é diferente do inicial reservada e final reservada
+                                        // se for diferente, é garantido que o eventos reservado para a sala atual do loop não ocorre em um só dia
+                                        if(!datainicial.equals(datainicialreservada) && !datainicial.equals(datafinalreservada)) {
+                                            // verficar se a data é maior que a datafinalreservada ou se é menor que a datainicialreservada
+                                            if(datainicial.compareTo(datafinalreservada) > 0 || datainicial.compareTo(datainicialreservada) < 0) {
+                                                podeReservar = true; // pode reservar pois datas não estão no mesmo intervalo neste caso
+                                            } else {
+                                                podeReservar = false; // por ser apenas um dia é garantido que a sala ja esta reservada para o dia
+                                                break;
                                             }
-                                        }
-                                    }
-
-                                    try {
-                                        datainicialreservada = sdf.parse(dinicialreservada);
-                                        datafinalreservada = sdf.parse(dfinalreservada);
-                                    } catch (ParseException pex){
-                                        pex.printStackTrace();
-                                    }
-
-                                    // primeiro veriricar se a sala que foi reservada e igual a analisada
-                                    if (ress.first.equals(campoConfSala.getText().toString())) {
-                                        // O trecho de codigo abaixo serve para verificar as datas
-                                        // primeiro cenário se o evento ocorrer em apenas 1 dia, o que poderá desempatar é a hora, mas.
-                                        if(datainicial.equals(datafinal)) {
-                                            // primeiro verificar se data inicial é diferente do inicial reservada e final reservada
-                                            // se for diferente, é garantido que o eventos reservado para a sala atual do loop não ocorre em um só dia
-                                            if(!datainicial.equals(datainicialreservada) && !datainicial.equals(datafinalreservada)) {
-                                                // verficar se a data é maior que a datafinalreservada ou se é menor que a datainicialreservada
-                                                if(datainicial.compareTo(datafinalreservada) > 0 || datainicial.compareTo(datainicialreservada) < 0) {
-                                                    podeReservar = true; // pode reservar pois datas não estão no mesmo intervalo neste caso
+                                        } else {
+                                            // verificar com qual data o dia escolhido é igual, se é a final do evento ou a inicial
+                                            // caso o dia que já foi reservado seja igual também. Verificar para a hora, a mesma coisa que para a data acima
+                                            if(datainicialreservada.equals(datafinalreservada) && datainicial.equals(datainicialreservada)) {
+                                                if(horainicial.compareTo(horafinalreservada) > 0 || horafinal.compareTo(horainicialreservada) < 0) {
+                                                    podeReservar = true;
                                                 } else {
-                                                    podeReservar = false; // por ser apenas um dia é garantido que a sala ja esta reservada para o dia
+                                                    podeReservar = false;
                                                     break;
                                                 }
                                             } else {
-                                                // verificar com qual data o dia escolhido é igual, se é a final do evento ou a inicial
-                                                // caso o dia que já foi reservado seja igual também. Verificar para a hora, a mesma coisa que para a data acima
-                                                if(datainicialreservada.equals(datafinalreservada) && datainicial.equals(datainicialreservada)) {
-                                                    if(horainicial.compareTo(horafinalreservada) > 0 || horafinal.compareTo(horainicialreservada) < 0) {
-                                                        podeReservar = true;
-                                                    } else {
-                                                        podeReservar = false;
-                                                        break;
-                                                    }
-                                                } else {
-                                                    // supoe-se que a datainicial reservada é diferente da finalreservada
-                                                    if(datainicial.equals(datainicialreservada)) {
-                                                        // verificar se hora final do evento é menor que a hora inicial reservada
-                                                        if(horafinal.compareTo(horainicialreservada) < 0) {
-                                                            podeReservar = true;
-                                                        } else {
-                                                            podeReservar = false;
-                                                            break;
-                                                        }
-                                                    } else {
-                                                        // é igual a final, verificar se a hora inicial é apos a hora final reservada
-                                                        if(horainicial.compareTo(horafinalreservada) > 0) {
-                                                            podeReservar = true;
-                                                        } else {
-                                                            podeReservar = false;
-                                                            break;
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        } else {
-                                            // se entrar neste else, o eventos ocorre durante vários dias
-                                            if(datafinal.compareTo(datainicialreservada) < 0 || datainicial.compareTo(datafinalreservada) > 0) {
-                                                // se entrar aqui, é porque evento ocorre antes ou depois do tempo que foi reservado
-                                                podeReservar = true;
-                                            } else {
-                                                // uma das datas são iguais a data reservada (vericar a hora)
-                                               if(datainicial.equals(datafinalreservada)) {
-                                                    // a datainicial só pode ser igual a final, se for igual a inicial haverá sobreposição de horários
-                                                    // a datafinal só pode ser igual a inicial, se for igual a final, haverá sobreposição também
-                                                    // quando levado em consideração que as datas são diferentes também para a reservada
-                                                    // e por levar em consideração que o evento ocorre durante mais de um dia
-                                                    // se o evento começar após a duração da sala reservada, pode reservar então
-                                                    if(horainicial.compareTo(horafinalreservada) > 0) {
-                                                        podeReservar = true;
-                                                    } else {
-                                                        podeReservar = false;
-                                                        break;
-                                                    }
-                                                } else if (datafinal.equals(datainicialreservada)){
-                                                    // se a hora final do evento acabar antes da proxima reserva
+                                                // supoe-se que a datainicial reservada é diferente da finalreservada
+                                                if(datainicial.equals(datainicialreservada)) {
+                                                    // verificar se hora final do evento é menor que a hora inicial reservada
                                                     if(horafinal.compareTo(horainicialreservada) < 0) {
                                                         podeReservar = true;
                                                     } else {
@@ -301,63 +267,125 @@ public class ReservarSala extends AppCompatActivity {
                                                         break;
                                                     }
                                                 } else {
-                                                   // não tem dias iguais e é garantido que os tempos estão se sobreescrevendo
-                                                   podeReservar = false;
-                                                   break;
-                                               }
+                                                    // é igual a final, verificar se a hora inicial é apos a hora final reservada
+                                                    if(horainicial.compareTo(horafinalreservada) > 0) {
+                                                        podeReservar = true;
+                                                    } else {
+                                                        podeReservar = false;
+                                                        break;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    } else {
+                                        // se entrar neste else, o eventos ocorre durante vários dias
+                                        if(datafinal.compareTo(datainicialreservada) < 0 || datainicial.compareTo(datafinalreservada) > 0) {
+                                            // se entrar aqui, é porque evento ocorre antes ou depois do tempo que foi reservado
+                                            podeReservar = true;
+                                        } else {
+                                            // uma das datas são iguais a data reservada (vericar a hora)
+                                            if(datainicial.equals(datafinalreservada)) {
+                                                // a datainicial só pode ser igual a final, se for igual a inicial haverá sobreposição de horários
+                                                // a datafinal só pode ser igual a inicial, se for igual a final, haverá sobreposição também
+                                                // quando levado em consideração que as datas são diferentes também para a reservada
+                                                // e por levar em consideração que o evento ocorre durante mais de um dia
+                                                // se o evento começar após a duração da sala reservada, pode reservar então
+                                                if(horainicial.compareTo(horafinalreservada) > 0) {
+                                                    podeReservar = true;
+                                                } else {
+                                                    podeReservar = false;
+                                                    break;
+                                                }
+                                            } else if (datafinal.equals(datainicialreservada)){
+                                                // se a hora final do evento acabar antes da proxima reserva
+                                                if(horafinal.compareTo(horainicialreservada) < 0) {
+                                                    podeReservar = true;
+                                                } else {
+                                                    podeReservar = false;
+                                                    break;
+                                                }
+                                            } else {
+                                                // não tem dias iguais e é garantido que os tempos estão se sobreescrevendo
+                                                podeReservar = false;
+                                                break;
                                             }
                                         }
                                     }
                                 }
+                            }
 
-                                // todos os false tiveram break, porque a partir do momento em que houver um false, a sala não poderia mais ser reservada
-                                // se naofoireservadaainda for true, é proque a sala ainda não foi reservada então, pode reservar
-                                if(podeReservar) {
+                            // todos os false tiveram break, porque a partir do momento em que houver um false, a sala não poderia mais ser reservada
+                            // se naofoireservadaainda for true, é proque a sala ainda não foi reservada então, pode reservar
+
+                            if(podeReservar) {
+                                receptor = true;
+                                if(isComDefeito.get(i).equals("true")) {
+                                    DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            switch (which) {
+                                                case DialogInterface.BUTTON_POSITIVE:
+                                                    inserirSalasreservadasNoBd(campoConfSala.getText().toString(),
+                                                            nameFuncionario.toString(), campoEvento.getText().toString(), campoDescricao.getText().toString(),
+                                                            campoDataHoraInicial.getText().toString(), campoDataHoraFinal.getText().toString(),
+                                                            campoSite.getText().toString());
+                                                    break;
+                                                case DialogInterface.BUTTON_NEGATIVE:
+                                                    break;
+                                            }
+                                        }
+                                    };
+
+                                    AlertDialog.Builder builder = new AlertDialog.Builder(ReservarSala.this, R.style.DialogThemeTwo);
+                                    builder.setMessage(campo + " está com defeito ou passando por reformas. Deseja realmente reservar a sala?")
+                                            .setPositiveButton("Sim", dialogClickListener)
+                                            .setNegativeButton("Não", dialogClickListener).show();
+                                } else {
                                     inserirSalasreservadasNoBd(campoConfSala.getText().toString(),
                                             nameFuncionario.toString(), campoEvento.getText().toString(), campoDescricao.getText().toString(),
                                             campoDataHoraInicial.getText().toString(), campoDataHoraFinal.getText().toString(),
                                             campoSite.getText().toString());
-                                    receptor = true;
-                                    break;
-                                } else {
-                                    Toast.makeText(ReservarSala.this, campoConfSala.getText().toString()
-                                            + " já está reservado (a) de " + dinicialreservada + " " + horainicialreservada
-                                            + " até " + dfinalreservada + " - " + horafinalreservada, Toast.LENGTH_SHORT).show();
-                                    receptor = true;
-                                    break;
                                 }
+                                break;
                             } else {
-                                if(campoConfSala.getText().toString().equals("") || campoConfSala.getText().toString().isEmpty()) {
-                                    campoConfSala.setError("Selecione a sala que desseja reservar");
-                                    campoConfSala.requestFocus();
-                                }
-
-                                if(campoEvento.getText().toString().equals("") || campoEvento.getText().toString().isEmpty()) {
-                                    campoEvento.setError("Insira o nome do evento");
-                                    campoEvento.requestFocus();
-                                }
-
-                                if(campoDataHoraInicial.getText().toString().isEmpty() ||
-                                        campoDataHoraInicial.getText().toString().equalsIgnoreCase("DATA/HORA FINAL")
-                                || !(campoDataHoraInicial.getText().toString().length() == 16)) {
-                                    Toast.makeText(ReservarSala.this, "Insira data e hora inicial.", Toast.LENGTH_SHORT).show();
-                                }
-
-                                if(campoDataHoraFinal.getText().toString().isEmpty() ||
-                                        campoDataHoraFinal.getText().toString().equalsIgnoreCase("DATA/HORA FINAL")
-                                        || !(campoDataHoraFinal.getText().toString().length() == 16)) {
-                                    Toast.makeText(ReservarSala.this, "Insira data e hora final.", Toast.LENGTH_SHORT).show();
-                                }
-
-                               // Toast.makeText(ReservarSala.this, "Preencher todos os campos!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ReservarSala.this, campoConfSala.getText().toString()
+                                        + " já está reservado (a) de " + dinicialreservada + " " + horainicialreservada
+                                        + " até " + dfinalreservada + " - " + horafinalreservada, Toast.LENGTH_SHORT).show();
                                 receptor = true;
                                 break;
                             }
                         } else {
-                            Toast.makeText(ReservarSala.this, "Sala está com defeito ou passando por reformas!", Toast.LENGTH_SHORT).show();
+                            if(campoConfSala.getText().toString().equals("") || campoConfSala.getText().toString().isEmpty()) {
+                                campoConfSala.setError("Selecione a sala que deseja reservar");
+                                campoConfSala.requestFocus();
+                            }
+
+                            if(campoEvento.getText().toString().equals("") || campoEvento.getText().toString().isEmpty()) {
+                                campoEvento.setError("Insira o nome do evento");
+                                campoEvento.requestFocus();
+                            }
+
+                            if(campoDataHoraInicial.getText().toString().isEmpty() ||
+                                    campoDataHoraInicial.getText().toString().equalsIgnoreCase("DATA/HORA FINAL")
+                                    || !(campoDataHoraInicial.getText().toString().length() == 16)) {
+                                Toast.makeText(ReservarSala.this, "Insira data e hora inicial.", Toast.LENGTH_SHORT).show();
+                            }
+
+                            if(campoDataHoraFinal.getText().toString().isEmpty() ||
+                                    campoDataHoraFinal.getText().toString().equalsIgnoreCase("DATA/HORA FINAL")
+                                    || !(campoDataHoraFinal.getText().toString().length() == 16)) {
+                                Toast.makeText(ReservarSala.this, "Insira data e hora final.", Toast.LENGTH_SHORT).show();
+                            }
+
+                            // Toast.makeText(ReservarSala.this, "Preencher todos os campos!", Toast.LENGTH_SHORT).show();
                             receptor = true;
                             break;
                         }
+                        //    } else {
+                        //        Toast.makeText(ReservarSala.this, "Sala está com defeito ou passando por reformas!", Toast.LENGTH_SHORT).show();
+                        //      receptor = true;
+                        //    break;
+                        //}
                     } else{
                         receptor = false;
                     }

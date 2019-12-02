@@ -109,22 +109,22 @@ public class EventosPorDia extends AppCompatActivity {
 
                 text1.setText(salas_reservadas.get(position).toString());
                 text2.setText("Por: " + Funcionario.get(position).toString() );
-                text3.setText("Evento: " + Evento.get(position).toString());
-                text4.setText("Descrição: " + Descricao.get(position).toString());
-                text5.setText("Site: " + Site.get(position).toString());
+                text3.setText("    " + Evento.get(position).toString());
+                text4.setText("    " + Descricao.get(position).toString());
+                text5.setText("    " + Site.get(position).toString());
                 text6.setText("Início: " + DataHora_Inicial.get(position).toString() + " - Até: "  + DataHora_Final.get(position).toString());
 
                 text1.setTextColor(Color.BLACK);
                 text2.setTextColor(Color.BLACK);
                 text3.setTextColor(Color.BLACK);
                 text4.setTextColor(Color.BLACK);
-                text5.setTextColor(Color.BLUE);
+                text5.setTextColor(Color.BLACK);
                 text6.setTextColor(Color.BLACK);
 
                 text1.setTextSize(20);
                 text2.setTextSize(15);
                 text3.setTextSize(20);
-                text4.setTextSize(20);
+                text4.setTextSize(18);
                 text5.setTextSize(15);
                 text6.setTextSize(15);
 
