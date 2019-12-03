@@ -53,22 +53,45 @@ public class CadastroFuncionario extends AppCompatActivity {
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(CadastroFuncionario.this, R.style.CalenderViewCustom);
                 builder.setTitle("Termos de Uso");
-                builder.setMessage("ANTES DE SE ASSOCIAR AO SITE LEIA CUIDADOSAMENTE ESTE TERMO E CONDIÇÕES DE USO DO SERVIÇO.\n" +
-                        "\n" +
-                        "Ao efetuar o registro o USUÁRIO ESTARÁ DECLARANDO TER LIDO E ACEITO INTEGRALMENTE, SEM QUALQUER RESERVA, " +
+                builder.setMessage("ANTES DE SE ASSOCIAR AO APLICATIVO LEIA CUIDADOSAMENTE ESTE TERMO E CONDIÇÕES DE USO DO SERVIÇO.\n" +
+                        "\n1. APRESENTAÇÃO E SERVIÇO UTILIZADO\n\n" +
+                        "Ao efetuar o registro o USUÁRIO ESTARÁ DECLARANDO TER LIDO E ACEITADO INTEGRALMENTE, SEM QUALQUER RESERVA, " +
                         "ESTE CONTRATO e TERMO DE USO que apresenta as “Condições Gerais” aplicáveis ao uso dos serviços " +
-                        "oferecidos por Simples Loja Online, um produto Tuiuiú Tecnologia da Informação, sociedade limitada, " +
-                        "inscrita no CNPJ sob n.º 08638806/0001-11, " +
-                        "doravante denominado “Simples Loja Online”, que presta um serviço interativo de prestação " +
-                        "de serviços na internet, fornecendo uma plataforma virtual, locando espaços virtuais e " +
-                        "hospedando conteúdo fornecido por terceiros. O Simples Loja Online é um serviço que " +
-                        "disponibiliza ferramentas de lojas virtuais para diversos empreendedores na web, " +
-                        "onde os visitantes livremente escolhem uma loja em que pretendem adquirir produtos " +
-                        "e serviços de seu interesse. Portanto, o Simples Loja Online não realiza vendas, " +
-                        "não faz intermediações, não oferece produtos ou serviços próprios. " +
-                        "Os serviços prestados são operados e administrados por Simples " +
-                        "Loja Online na rede mundial de computadores (“Internet”), " +
-                        "dentro do site www.simpleslojaonline.com.br e demais plataformas formalmente filiadas.");
+                        "oferecidos pelo RESPER SYSTEM, um produto desenvolvido por estudantes do curso de Bacharelado em Sistemas de Informação " +
+                        "da Universidade Federal do Pará - Campus Castanhal com o apoio da Faculdade de Computação.\n" +
+                        "Os respectivos estudades são: Anne Livia da F. Macedo, Marcos Fernando S. Costa, Luiz Felipe C. Santos, Kayton dos S. Shimoda e " +
+                        "Jadson Iorran dos S. Santos.\n\nO aplicativo denominado \"Resper System\", oferece um serviço interativo de reserva " +
+                        "de salas em tempo real para eventos e reuniões da universidade, utilizando as ferramentas do Firebase. " +
+                        "Este sistema permite que os funcionários possam inserir novas salas no sistema, indicar que a sala está com problemas, " +
+                        "remover salas do sistema, reservar salas para determinados eventos, liberar a sala que foi reservada, editar " +
+                        "algumas informações referente a reserva e visualizar os eventos cadastrados no sistema.\n" +
+                        "O funcionário somente terá acesso ao sistema após ter seu cadastro aprovado pelo(s) administrador(es) do aplicativo, " +
+                        "que se dará através da análise de algum documento enviado para adminresper@gmail.com, que comprove vínculo com a instituição.\n" +
+                        "Caso o funcionário não forneça um documento que comprove seu vínculo com a instituição dentro de 90 dias, sua conta poderá ser removida." +
+                        "\n\n2. ASSOCIAÇÃO\n\n" +
+                        "O Usuário do RESPER SYSTEM se compromete a fornecer dados pessoais verdadeiros, precisos, atuais e completos durante o procedimento de registro, " +
+                        "bem como a manter atualizadas as informações prestadas.\n\n" +
+                        "O RESPER SYSTEM poderá fornecer um agregado de dados estatísticos sobre quantidade de eventos cadastrados, " +
+                        "número de usuários, quantidade de vezes em que a determinada sala foi reservada, dentre outras informações." +
+                        "\n\n3. DA POLÍTICA DE PRIVACIDADE E SEGURANÇA\n\n" +
+                        "O RESPER SYSTEM possui uma política de privacidade e segurança que visa proteger aos seus Usuários " +
+                        "contra o uso indevido de suas informações pessoais por terceiros\n\n" +
+                        "O RESPER SYSTEM não venderá ou compartilhará suas informações pessoais com terceiros. " +
+                        "Somente mediante sua expressa autorização ou através de autorização judicial é que " +
+                        "essas informações poderão ser divulgadas à autoridade solicitante. Caso o Usuário " +
+                        "disponibilize suas informações constantes no aplicativo RESPER SYSTEM a terceiros, será de " +
+                        "sua inteira responsabilidade o uso que esses venham a fazer das mesmas.\n\n" +
+                        "Em caso de alterações na política de segurança do RESPER SYSTEM, o Usuário será avisado através de seu e-mail." +
+                        "\n\n3. DAS OBRIGAÇÕES DO USUÁRIO\n\n" +
+                        "O Usuário se responsabiliza pela titularidade das informações que transmite ao RESPER SYSTEM.\n\n" +
+                        "O Usuário deve fornecer dados corretos, exatos, precisos e atuais. Cada Usuário é pessoalmente responsável pelos dados que fornece.\n\n" +
+                        "O RESPER SYSTEM não se responsabiliza pela veracidade das informações prestadas por seus Usuários.\n\n" +
+                        "O fornecimento de falsas informações configura crime de falsidade ideológica, tipificado no art. 299 do Código Penal, " +
+                        "cuja pena está estabelecida entre um a três anos de reclusão, acrescido de multa.\n\n" +
+                        "O fornecimento de falsa informação pelo Usuário dará direito ao RESPER SYSTEM de excluir o respectivo usuário do sistema, sem aviso prévio, seja em caráter temporário, " +
+                        "pelo tempo que os administradores entenderem necessário para esclarecer a situação, ou em definitivo, " +
+                        "a critério exclusivo dos administradores, em razão da violação dos termos deste acordo.\n\n" +
+                        "Os danos causados a terceiros pela utilização de informações falsas pelo Usuário sujeitará este último às penas da lei, bem como ao direito de regresso por parte do RESPER SYSTEM.\n\n");
 
                 builder.setNegativeButton("Voltar", new DialogInterface.OnClickListener() {
                     @Override
