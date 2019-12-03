@@ -96,14 +96,13 @@
         app:fontFamily="@font/assistant_semibold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/campoCPFfuncionario" />
+        app:layout_constraintTop_toBottomOf="@+id/checkeTermosDeUso" />
 
     <Button
         android:id="@+id/btVoltar"
         android:layout_width="313dp"
         android:layout_height="50dp"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="44dp"
         android:background="@drawable/button_background_color2"
         android:text="Voltar"
         android:textColor="#fff"
@@ -111,10 +110,9 @@
         app:fontFamily="@font/assistant_semibold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btCadastrarFuncionario"
-        app:layout_constraintVertical_bias="0.058" />
+        app:layout_constraintVertical_bias="0.008" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -125,4 +123,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/signup" />
+
+    <TextView
+        android:id="@+id/tvLinkTermosdeUso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/assistant_semibold"
+        android:text="Termos de uso"
+        android:textColor="#009688"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/campoCPFfuncionario" />
+
+    <CheckBox
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/checkeTermosDeUso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:buttonTint="@android:color/holo_green_dark"
+        android:text="Eu li e aceito os termos de uso"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvLinkTermosdeUso" />
 </androidx.constraintlayout.widget.ConstraintLayout>

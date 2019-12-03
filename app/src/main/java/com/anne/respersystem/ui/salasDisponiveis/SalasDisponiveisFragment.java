@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.res.ResourcesCompat;
@@ -43,6 +44,7 @@ public class SalasDisponiveisFragment extends Fragment {
     private ArrayList<String> capacidade;
     private ArrayList<String> local;
     private ArrayList<String> defeito;
+    private ArrayList<String> salas_reservadas;
 
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
 
@@ -92,6 +94,24 @@ public class SalasDisponiveisFragment extends Fragment {
         capacidade = new ArrayList<String>();
         local = new ArrayList<String>();
         defeito = new ArrayList<String>();
+        salas_reservadas = new ArrayList<>();
+
+        // para verificar se a sala esta reservada
+        ref.child("salas_reservadas").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot snap : dataSnapshot.getChildren()) {
+
+                    String Salareservada = snap.child("Sala").getValue(String.class);
+                    salas_reservadas.add(Salareservada);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         adapter = new ArrayAdapter<String>(getActivity().getApplicationContext(),
                 android.R.layout.simple_list_item_2,
@@ -129,7 +149,6 @@ public class SalasDisponiveisFragment extends Fragment {
         };
 
         listaDeSalas.setAdapter(adapter);
-
 
         // populando arrays com os dados
         ref.child("salas").addListenerForSingleValueEvent(new ValueEventListener() {
@@ -195,18 +214,31 @@ public class SalasDisponiveisFragment extends Fragment {
                             public void onClick(DialogInterface dialog, int which) {
                                 switch (which){
                                     case DialogInterface.BUTTON_POSITIVE:
-                                        // coloca para sim
-                                        try {
-                                            // String defeito = ref.child("salas").child(ids.get(position)).child("defeito").toString();
-                                            ref.child("salas").child(ids.get(position)).removeValue();
-                                            // ja que o dado nao carrega ao mesmo tempo que o firebase e atualizado, remover do firebase logo
-                                            adapter.remove(adapter.getItem(position));
-                                            Intent intent = getActivity().getIntent();
-                                            getActivity().finish();
-                                            startActivity(intent);
-                                            //getActivity().finish();
-                                        } catch (Exception e) {
-                                            e.printStackTrace();
+                                        boolean reservada = false;
+                                        // primeiro verificar se a sala não está reservada
+                                        for(String salareservada : salas_reservadas) {
+                                            if(salareservada.equals(salas.get(position))) {
+                                                reservada = true;
+                                            }
+                                        }
+                                        if(!reservada) {
+                                            // se não estiver reservada, pode remove-la do sistema
+                                            try {
+                                                // String defeito = ref.child("salas").child(ids.get(position)).child("defeito").toString();
+                                                ref.child("salas").child(ids.get(position)).removeValue();
+                                                // ja que o dado nao carrega ao mesmo tempo que o firebase e atualizado, remover do firebase logo
+                                                adapter.remove(adapter.getItem(position));
+                                                Intent intent = getActivity().getIntent();
+                                                getActivity().finish();
+                                                startActivity(intent);
+                                                //getActivity().finish();
+                                            } catch (Exception e) {
+                                                e.printStackTrace();
+                                            }
+                                        } else {
+                                            // se estiver reservada nao pode remover
+                                            Toast.makeText(getContext(), "Não é possivel remover a sala do sistema, pois ela está reservada. " +
+                                                    "Para removê-la, fale com o(s) funcionário(s) que a reservou.", Toast.LENGTH_LONG).show();
                                         }
                                         break;
                                     case DialogInterface.BUTTON_NEGATIVE:

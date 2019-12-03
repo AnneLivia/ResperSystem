@@ -27,7 +27,6 @@ import androidx.lifecycle.ViewModelProviders;
 public class SalasReservadasFragment_discente extends Fragment {
 
     private ListView salareservadas;
-
     private ArrayList<String> ids;
     private ArrayList<String> salas_reservadas;
     private ArrayList<String> Funcionario;
