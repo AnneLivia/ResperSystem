@@ -91,7 +91,9 @@ public class CadastroFuncionario extends AppCompatActivity {
                         "O fornecimento de falsa informação pelo Usuário dará direito ao RESPER SYSTEM de excluir o respectivo usuário do sistema, sem aviso prévio, seja em caráter temporário, " +
                         "pelo tempo que os administradores entenderem necessário para esclarecer a situação, ou em definitivo, " +
                         "a critério exclusivo dos administradores, em razão da violação dos termos deste acordo.\n\n" +
-                        "Os danos causados a terceiros pela utilização de informações falsas pelo Usuário sujeitará este último às penas da lei, bem como ao direito de regresso por parte do RESPER SYSTEM.\n\n");
+                        "Os danos causados a terceiros pela utilização de informações falsas pelo Usuário sujeitará este último às penas da lei, bem como ao direito de regresso por parte do RESPER SYSTEM. \n\n" +
+                        "Este programa não poderá ser comecializado por usuários além dos criadores, caso contrário o usuário que descomprir essa linha pagará multa " +
+                        "e deverá retirar as cópias comercializadas de circulação. \n\n");
 
                 builder.setNegativeButton("Voltar", new DialogInterface.OnClickListener() {
                     @Override
