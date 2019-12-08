@@ -257,7 +257,7 @@ public class SalasDisponiveisFragment extends Fragment {
                     }
                 });
 
-                Collections.sort(salas);
+                //Collections.sort(salas);
                 adapter.notifyDataSetChanged();
             }
 

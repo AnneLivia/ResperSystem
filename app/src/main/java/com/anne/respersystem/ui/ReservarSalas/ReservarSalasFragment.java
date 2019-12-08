@@ -201,7 +201,7 @@ public class ReservarSalasFragment extends Fragment {
                                                 ref.child("salas_reservadas").child(ids.get(position)).removeValue();
                                                 // ja que o dado nao carrega ao mesmo tempo que o firebase e atualizado, remover do firebase logo
                                                 adapter.remove(adapter.getItem(position));
-                                                //getActivity().finish();
+                                                getActivity().finish();
                                             } catch (Exception e) {
                                                 e.printStackTrace();
                                             }
