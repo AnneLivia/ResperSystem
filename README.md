@@ -1,6 +1,9 @@
 # Resper System
 ## Introduction
-App that allows people who work at UFPA book a room for events or workshops. 
+App that allows to insert rooms from a space and book a space for a meet or something.
+
+
+## Images from the app
 
 OBS: App under development by [Anne Livia - UFPA](https://github.com/AnneLivia) and [Marcos Fernando - UFPA](https://github.com/Marcos-Fernando)
 
@@ -8,4 +11,3 @@ OBS: App under development by [Anne Livia - UFPA](https://github.com/AnneLivia) 
  - Android Studio
  -  Java
  - Firebase
-
