@@ -1,11 +1,8 @@
 # Resper System
-## Introduction
-App that allows people who work at UFPA book a room for events or workshops. 
 
-OBS: App under development by [Anne Livia - UFPA](https://github.com/AnneLivia) and [Marcos Fernando - UFPA](https://github.com/Marcos-Fernando)
+Android App that allows reservation of a classroom or some other space available at UFPA for events lectures or workshops.
 
 ## Technologies
  - Android Studio
  -  Java
  - Firebase
-
